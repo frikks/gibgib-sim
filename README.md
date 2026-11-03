@@ -4,14 +4,14 @@
 
 ### [⬇️ Скачать последнюю версию](../../releases/latest)
 
-Android 8.0+ · без интернета и регистрации · русский и английский интерфейс
+Android 8.0+ · без интернета и регистрации · русский и английский интерфейс · [версия для Windows](https://github.com/frikks/gibgib-sim-windows/releases/latest)
 
 <p align="center">
-  <img src="screenshots/part-3.2.png" width="19%" alt="Вкладка «Деталь»: таблица полок, подбор инструмента, чертёж и документы">
-  <img src="screenshots/favorites-3.2.png" width="19%" alt="Избранный инструмент ⭐">
-  <img src="screenshots/alarm-3.2.png" width="19%" alt="Невозможный гиб: свечение и переход к проблемному шагу">
-  <img src="screenshots/simulator-amoled.png" width="19%" alt="Симулятор, тема AMOLED">
-  <img src="screenshots/settings-3.2.png" width="19%" alt="Меню «Настройки»">
+  <img src="screenshots/simulator-3.3.png" width="19%" alt="Симулятор, тема AMOLED">
+  <img src="screenshots/part-3.3.png" width="19%" alt="Вкладка «Деталь»: таблица полок с буквами гибов">
+  <img src="screenshots/flat-3.3.png" width="19%" alt="Развёртка, тёмная тема">
+  <img src="screenshots/tools-3.3.png" width="19%" alt="Выбор пуансона и матрицы, избранное ★">
+  <img src="screenshots/settings-3.3.png" width="19%" alt="Меню «Настройки»">
 </p>
 
 <p align="center">
@@ -22,7 +22,17 @@ Android 8.0+ · без интернета и регистрации · русс�
   <img src="screenshots/hem-phases.png" alt="Этапы подгибки и плющения: гибка, переход на подушку, подвод, плющение, отвод">
 </p>
 
-## Что нового в 3.2
+## Что нового в 3.3
+- 🎨 **Новый внешний вид.** Графитовые темы без синего оттенка (светлая, тёмная, AMOLED) и один акцент — сигнальный оранжевый: деталь, главная кнопка, выбранная вкладка.
+- Вкладки одной строкой — больше места для окна симуляции.
+- Инструмент и станок стальные серые, размеры — как линии чертежа; статус касания — плашка с цветной точкой.
+- Буквы гибов A, B, C… в кружках — одинаково в симуляции и в таблицах.
+- Кнопки и поля 36 px, отступы по сетке 4 px, подписи разделов обычными буквами.
+- Расчёты, библиотека, чертёж и файлы не менялись. Редизайн — по методике [unslop](https://github.com/heydamir/unslop).
+
+<details>
+<summary>Что было в 3.2</summary>
+
 - 📐 **Чертёж A4 как в CAD** — сечение с размерами, изометрия, развёртка с линиями гиба, таблица гибов, основная надпись. Сохранение в PDF или PNG и печать с телефона.
 - 🤖 **Автоподбор инструмента** — по всей библиотеке (500 + 500) или только по избранному ⭐ «в наличии».
 - ⭐ **Избранный инструмент** — звезда в списках пуансонов и матриц, отмеченные всегда наверху.
@@ -30,6 +40,8 @@ Android 8.0+ · без интернета и регистрации · русс�
 - 🚨 **Невозможный гиб** — свечение краёв, вибрация в такт и переход к проблемному шагу.
 - ⚙️ **Меню «Настройки»** — язык, тема, вибрация, «О приложении». 📳 Вибрация на нажатия, ввод и ошибки.
 - 🔧 Исправлены сохранение TXT/CSV/RTF и «слипание» текста на части телефонов; таблица полок в 5 столбцов; «Внутренний R» вместо «Rвн».
+
+</details>
 
 ## Возможности
 
@@ -70,7 +82,7 @@ Android 8.0+ · без интернета и регистрации · русс�
 ### 📱 Удобство
 - Одна деталь для всех вкладок: изменения сразу видны везде.
 - Встроенная цифровая клавиатура для ввода размеров.
-- Меню ⚙ «Настройки»: язык, тема (системная, светлая, тёмная, AMOLED), вибрация, «О приложении».
+- Меню «Настройки» (шестерёнка справа вверху): язык, тема (системная, светлая, тёмная, AMOLED), вибрация, «О приложении».
 - Вибрация на нажатия, ввод значений и ошибки (отключается).
 - Нативное приложение на Rust с графикой OpenGL ES.
 
@@ -123,9 +135,10 @@ Android 8.0+ · без интернета и регистрации · русс�
 - Automatic punch + die selection from the whole library or from your ⭐ favourites.
 - A4 drawing (section with dimensions, isometric view, flat pattern, bend table, title block) as PDF/PNG and printing; info_tools.txt for the operator.
 - Flat pattern (OSSB, BA, BD), K-factor from a test bend, export to TXT, CSV and RTF.
-- Settings menu ⚙ (language, light/dark/AMOLED theme, haptics). No internet permission, no ads.
+- Settings menu (language, light/dark/AMOLED theme, haptics). No internet permission, no ads.
+- 3.3: redesigned interface — graphite themes, one signal-orange accent, one-row tabs, ringed bend letters, larger touch targets.
 
-[Download the latest release](../../releases/latest) · Android 8.0+
+[Download the latest release](../../releases/latest) · Android 8.0+ · Windows version: [gibgib-sim-windows](https://github.com/frikks/gibgib-sim-windows/releases/latest)
 
 This is an educational tool, not a machine safety system. Always verify tooling and bend sequences against real drawings.
 
