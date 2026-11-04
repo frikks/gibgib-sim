@@ -7,11 +7,15 @@
 Android 8.0+ · без интернета и регистрации · русский и английский интерфейс · [версия для Windows](https://github.com/frikks/gibgib-sim-windows/releases/latest)
 
 <p align="center">
-  <img src="screenshots/simulator-3.3.png" width="19%" alt="Симулятор, тема AMOLED">
-  <img src="screenshots/part-3.3.png" width="19%" alt="Вкладка «Деталь»: таблица полок с буквами гибов">
-  <img src="screenshots/flat-3.3.png" width="19%" alt="Развёртка, тёмная тема">
-  <img src="screenshots/tools-3.3.png" width="19%" alt="Выбор пуансона и матрицы, избранное ★">
-  <img src="screenshots/settings-3.3.png" width="19%" alt="Меню «Настройки»">
+  <img src="screenshots/simulator-3.3.3.png" width="19%" alt="Симулятор, тема AMOLED">
+  <img src="screenshots/part-3.3.3.png" width="19%" alt="Вкладка «Деталь»: таблица полок с буквами гибов">
+  <img src="screenshots/flat-3.3.3.png" width="19%" alt="Развёртка, тёмная тема">
+  <img src="screenshots/tools-3.3.3.png" width="19%" alt="Список инструмента: долгое нажатие показывает контур">
+  <img src="screenshots/settings-3.3.3.png" width="19%" alt="Меню «Настройки»">
+</p>
+
+<p align="center">
+  <img src="screenshots/collage-3.3.3-tools.png" width="90%" alt="Выбор инструмента в 3.3.3: список 6–7 строк, контур по долгому нажатию, «Только избранное», K-фактор с печатью">
 </p>
 
 <p align="center">
