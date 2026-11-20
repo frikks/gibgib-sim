@@ -1,0 +1,41 @@
+name: Предложение функции
+description: Предложить улучшение симулятора
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Платформа
+      options:
+        - Android
+        - Windows
+        - Web (HTML)
+        - Все платформы
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Какая задача решается
+      description: Опишите ситуацию, в которой не хватает возможности
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Предлагаемое решение
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Альтернативы
+      description: Какие обходные пути вы пробовали
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Проверки
+      options:
+        - label: Искал похожее предложение в Issues
+          required: false

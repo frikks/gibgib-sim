@@ -1,0 +1,32 @@
+name: Verify release files
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify web edition SHA-256
+        run: |
+          expected="fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539"
+          actual="$(sha256sum GibGib-Sim-3.4.0.html | cut -d' ' -f1)"
+          echo "actual=$actual"
+          test "$actual" = "$expected"
+
+      - name: Verify checksum references in docs
+        run: |
+          expected="fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539"
+          grep -q "$expected" README.md
+          grep -q "$expected" CHANGELOG.md
+          if grep -q "70f71669" README.md CHANGELOG.md; then
+            echo "Old checksum found in docs" >&2
+            exit 1
+          fi
+
+      - name: Verify relative links
+        run: python3 .github/scripts/check_links.py

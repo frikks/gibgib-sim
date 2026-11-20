@@ -1,0 +1,69 @@
+name: Сообщить об ошибке
+description: Ошибка в Android, Windows или веб-версии
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Спасибо за сообщение. Заполните поля — так ошибку получится воспроизвести быстрее.
+  - type: dropdown
+    id: version
+    attributes:
+      label: Версия
+      description: Версия приложения, в которой проявилась ошибка
+      options:
+        - 3.4.0 (текущая)
+        - 3.3.3.x
+        - 3.3.0
+        - 3.2.x
+        - Другая / не знаю
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Платформа
+      options:
+        - Android
+        - Windows (EXE)
+        - Windows (MSIX)
+        - Web (HTML)
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Устройство / ОС
+      placeholder: "Например: Android 13, Pixel 6 / Windows 11 23H2 / Edge 130"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+      description: Что делали до появления ошибки
+      placeholder: |
+        1. Открыл вкладку ...
+        2. Выбрал профиль ...
+        3. Нажал ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемое и фактическое поведение
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Скриншот или видео
+      description: Прикрепите файл, если есть возможность
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Проверки
+      options:
+        - label: Проверил последнюю версию релиза
+          required: false
