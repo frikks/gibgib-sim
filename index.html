@@ -7,119 +7,163 @@
 <meta name="description" content="Офлайн-симулятор листогибочного пресса: 2D/3D-гибка, 1000 инструментов, развёртка, K-фактор и чертежи A4. Скачать для Android, Windows и браузера.">
 <style>
 :root{
-  --bg:#141517; --bg2:#1b1d20; --card:#202327; --card2:#272a2f;
-  --text:#f3f4f5; --muted:#9aa1a9; --accent:#ff6b00; --accent2:#ff9d4d;
-  --line:#32363b; --steel:#7d8791; --ok:#4caf50;
+  --bg:#0d0e11; --bg2:#15171b; --card:#1b1e23; --card2:#23272e;
+  --text:#f5f6f8; --muted:#9aa3ae; --line:#303640;
+  --accent:#ff6b00; --accent2:#ff9b4a; --p:#ff6b00; --p2:#ffb277;
+  --cyan:#35d6e8; --violet:#a77bff; --green:#7ddc6a; --blue:#6fb4ff;
   --mono:Consolas,"SF Mono",Menlo,monospace;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 "Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 "Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+::selection{background:var(--accent);color:#fff}
 
-/* ---------- header ---------- */
-header{position:sticky;top:0;z-index:50;background:rgba(20,21,23,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.header-in{height:66px;display:flex;align-items:center;gap:16px}
-.logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
-.logo i{display:block;width:9px;height:34px;background:var(--accent);border-radius:5px;box-shadow:0 0 22px rgba(255,107,0,.45)}
-.logo small{display:block;font-size:10px;letter-spacing:2px;color:var(--accent);font-weight:600}
-nav{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
-nav a{padding:8px 14px;border-radius:8px;color:var(--muted);font-size:14px}
-nav a:hover{color:var(--text);background:var(--card)}
+/* aurora background */
+.aurora{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(760px 520px at 12% -4%,rgba(255,107,0,.17),transparent 68%),
+  radial-gradient(700px 560px at 88% 12%,rgba(53,214,232,.13),transparent 68%),
+  radial-gradient(700px 620px at 60% 100%,rgba(167,123,255,.12),transparent 68%),
+  linear-gradient(180deg,#0f1013,#0b0c0e)}
+.aurora:after{content:"";position:absolute;inset:0;background-image:
+  linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:46px 46px;
+  mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 78%)}
+.orb{position:fixed;border-radius:50%;filter:blur(80px);opacity:.16;z-index:-1;pointer-events:none;animation:float 14s ease-in-out infinite}
+.orb.a{width:380px;height:380px;background:var(--accent);top:14%;left:-120px}
+.orb.b{width:340px;height:340px;background:var(--cyan);top:48%;right:-120px;animation-delay:-5s}
+.orb.c{width:300px;height:300px;background:var(--violet);bottom:2%;left:38%;animation-delay:-9s}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-36px)}}
 
-/* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:
-  radial-gradient(900px 460px at 78% 38%,rgba(255,107,0,.10),transparent 65%),
-  linear-gradient(180deg,#17181b,#141517)}
-.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:
-  linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(90deg,transparent,#000 35%,#000)}
-.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr 1fr;gap:40px;align-items:center;padding:74px 0 68px}
-@media(max-width:900px){.hero-in{grid-template-columns:1fr;padding:48px 0}}
-.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.badge{border:1px solid var(--line);border-radius:30px;padding:5px 12px;font-size:11px;letter-spacing:1.2px;color:var(--muted)}
-.badge.hot{border-color:var(--accent);color:var(--accent)}
-h1{font-size:clamp(34px,4.4vw,58px);line-height:1.05;margin:0 0 18px;letter-spacing:-1.2px}
-h1 span{color:var(--accent)}
-.lead{font-size:17px;color:var(--muted);max-width:560px;margin:0 0 28px}
+/* header */
+header{position:sticky;top:0;z-index:60;background:rgba(13,14,17,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.header-in{height:68px;display:flex;align-items:center;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px;white-space:nowrap}
+.logo i{display:block;width:10px;height:36px;border-radius:6px;background:linear-gradient(180deg,var(--accent2),var(--accent));box-shadow:0 0 26px rgba(255,107,0,.6)}
+.logo small{display:block;font-size:9.5px;letter-spacing:2.2px;color:var(--accent2);font-weight:700}
+nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+nav a{padding:8px 14px;border-radius:9px;color:var(--muted);font-size:14px;transition:.2s}
+nav a:hover{color:var(--text);background:var(--card2)}
+
+/* hero */
+.hero{position:relative;padding:72px 0 62px;border-bottom:1px solid var(--line)}
+.hero-in{display:grid;grid-template-columns:1fr 1.04fr;gap:48px;align-items:center}
+@media(max-width:980px){.hero-in{grid-template-columns:1fr}}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.badge{border:1px solid var(--line);border-radius:30px;padding:6px 13px;font-size:11px;letter-spacing:1.1px;color:var(--muted);background:rgba(255,255,255,.02)}
+.badge.hot{border-color:var(--p);color:var(--p2);box-shadow:0 0 20px color-mix(in srgb,var(--p) 22%,transparent)}
+h1{font-size:clamp(38px,4.8vw,64px);line-height:1.02;margin:0 0 20px;letter-spacing:-1.8px}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2) 55%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:17px;color:var(--muted);max-width:560px;margin:0 0 30px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-weight:600;transition:.2s}
-.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 10px 30px rgba(255,107,0,.22)}
-.btn.primary:hover{background:#ff7d1a}
-.btn svg{width:18px;height:18px}
-.version{margin-top:26px;color:var(--muted);font-size:13px}
-.version b{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:11px;border:1px solid var(--line);background:var(--card);font-weight:700;transition:.22s;cursor:pointer}
+.btn:hover{transform:translateY(-3px);border-color:var(--p)}
+.btn.primary{background:linear-gradient(135deg,var(--p),color-mix(in srgb,var(--p) 70%,#fff));border-color:transparent;color:#fff;box-shadow:0 14px 34px color-mix(in srgb,var(--p) 32%,transparent)}
+.mini-note{margin-top:24px;color:var(--muted);font-size:13px}
+.mini-note b{color:var(--text)}
 
-/* hero illustration */
-.scene{position:relative;width:100%;aspect-ratio:1/1;max-width:540px;margin:auto}
-.scene svg{width:100%;height:100%;display:block;filter:drop-shadow(0 24px 46px rgba(0,0,0,.5))}
-.punch{animation:punch 3.6s ease-in-out infinite;transform-origin:center}
-@keyframes punch{0%,12%{transform:translateY(-54px)}46%,62%{transform:translateY(6px)}100%{transform:translateY(-54px)}}
-.glowline{animation:pulse 3.6s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+/* hero device */
+.stage{position:relative;perspective:1200px}
+.frame{position:relative;border:1px solid var(--line);border-radius:20px;background:#101216;padding:10px;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 60px color-mix(in srgb,var(--p) 10%,transparent);transform:rotateY(-7deg) rotateX(3deg);transition:.5s}
+.frame:hover{transform:rotateY(0) rotateX(0)}
+.frame .bar{display:flex;gap:7px;align-items:center;padding:6px 8px 12px}
+.frame .bar i{width:10px;height:10px;border-radius:50%;background:#ff5f57}
+.frame .bar i:nth-child(2){background:#febc2e}.frame .bar i:nth-child(3){background:#28c840}
+.frame .bar span{margin-left:auto;font:11px var(--mono);color:var(--muted)}
+.frame img{display:block;width:100%;border-radius:12px;background:#eee;aspect-ratio:14/9;object-fit:cover;object-position:top;transition:opacity .35s}
+.stage .float{position:absolute;border:1px solid var(--line);border-radius:12px;background:rgba(20,23,28,.9);backdrop-filter:blur(10px);padding:10px 14px;font:12px var(--mono);box-shadow:0 14px 40px rgba(0,0,0,.5)}
+.float.f1{left:-36px;bottom:28px;color:var(--accent2);animation:float2 7s ease-in-out infinite}
+.float.f2{right:-30px;top:34px;color:var(--cyan);animation:float2 9s ease-in-out infinite reverse}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.platforms{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap}
+.pbtn{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:9px 16px;cursor:pointer;font-weight:600;transition:.2s}
+.pbtn:hover{color:var(--text)}
+.pbtn.active{border-color:var(--p);color:var(--p2);background:color-mix(in srgb,var(--p) 12%,var(--card));box-shadow:0 0 22px color-mix(in srgb,var(--p) 20%,transparent)}
 
-/* ---------- sections ---------- */
-section{padding:78px 0;border-bottom:1px solid var(--line)}
-.eyebrow{color:var(--accent);font-size:12px;letter-spacing:2.4px;text-transform:uppercase;font-weight:700;margin-bottom:12px}
-h2{font-size:clamp(26px,3vw,38px);line-height:1.15;margin:0 0 14px;letter-spacing:-.6px}
-.sub{color:var(--muted);max-width:720px;margin:0 0 38px}
+/* generic sections */
+section{padding:84px 0;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--accent2);font-size:12px;letter-spacing:2.6px;text-transform:uppercase;font-weight:800;margin-bottom:12px}
+h2{font-size:clamp(28px,3.4vw,42px);line-height:1.14;margin:0 0 14px;letter-spacing:-.9px}
+.sub{color:var(--muted);max-width:760px;margin:0 0 40px}
 
-/* download cards */
+/* download */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:900px){.cards{grid-template-columns:1fr}}
-.card{background:linear-gradient(180deg,var(--card),#1c1e21);border:1px solid var(--line);border-radius:16px;padding:26px;position:relative;overflow:hidden;transition:.25s}
-.card:hover{border-color:rgba(255,107,0,.55);transform:translateY(-4px)}
-.card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,0,.14),transparent 70%);right:-70px;top:-70px}
-.pico{width:46px;height:46px;border:1px solid var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;background:#18191c;margin-bottom:20px}
-.pico svg{width:26px;height:26px}
-.card h3{margin:0 0 6px;font-size:21px}
-.card .tagline{color:var(--muted);font-size:13px;min-height:42px}
-.file{margin:18px 0 8px;padding:11px 13px;background:#151618;border:1px solid var(--line);border-radius:9px;font:12px/1.5 var(--mono);color:var(--accent2);word-break:break-all}
+@media(max-width:980px){.cards{grid-template-columns:1fr}}
+.card{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--card),#15171b);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.28s}
+.card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--p) 60%,var(--line))}
+.card:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--c) 26%,transparent),transparent 70%);right:-90px;top:-90px;transition:.3s}
+.card[data-p="android"]{--c:var(--green)}.card[data-p="windows"]{--c:var(--blue)}.card[data-p="web"]{--c:var(--accent)}
+.card:hover:before{transform:scale(1.2)}
+.pico{width:50px;height:50px;border:1px solid color-mix(in srgb,var(--c) 50%,var(--line));border-radius:13px;display:flex;align-items:center;justify-content:center;background:#111316;margin-bottom:20px}
+.pico svg{width:27px;height:27px}
+.card h3{margin:0 0 6px;font-size:22px}
+.card .tagline{color:var(--muted);font-size:13px;min-height:44px}
+.file{margin:18px 0 9px;padding:11px 13px;background:#0f1114;border:1px solid var(--line);border-radius:9px;font:12px/1.5 var(--mono);color:var(--c);word-break:break-all}
 .hash{display:flex;align-items:center;gap:8px;margin-bottom:18px;font:11px/1.4 var(--mono);color:var(--muted)}
 .hash code{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.copy{background:none;border:1px solid var(--line);border-radius:6px;color:var(--muted);padding:4px 8px;cursor:pointer;font:11px var(--mono)}
-.copy:hover{color:var(--accent);border-color:var(--accent)}
-details{border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.copy{background:none;border:1px solid var(--line);border-radius:7px;color:var(--muted);padding:5px 9px;cursor:pointer;font:11px var(--mono)}
+.copy:hover{color:var(--c);border-color:var(--c)}
+.card .btn{width:100%;justify-content:center}
+details{border-top:1px solid var(--line);padding-top:14px;margin-top:16px}
 summary{cursor:pointer;color:var(--muted);font-size:13px}
 summary:hover{color:var(--text)}
 details p,details ol{color:var(--muted);font-size:13px}
 details code{color:var(--accent2);font-family:var(--mono)}
 
+/* interactive lab */
+.lab{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;align-items:center;background:linear-gradient(145deg,var(--card),#14161a);border:1px solid var(--line);border-radius:22px;padding:30px}
+@media(max-width:980px){.lab{grid-template-columns:1fr}}
+.lab svg{width:100%;height:auto;display:block}
+.ctrl label{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin:18px 0 8px}
+.ctrl label b{color:var(--accent2);font-family:var(--mono)}
+input[type=range]{width:100%;accent-color:var(--accent);cursor:pointer}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px}
+.readout div{border:1px solid var(--line);border-radius:12px;padding:14px;background:#111316}
+.readout span{display:block;color:var(--muted);font-size:11px;letter-spacing:.8px;text-transform:uppercase}
+.readout b{font:20px var(--mono);color:var(--text)}
+
 /* features */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:900px){.grid{grid-template-columns:1fr}}
-.feature{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+@media(max-width:980px){.grid{grid-template-columns:1fr}}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:25px;transition:.25s;position:relative;overflow:hidden}
+.feature:hover{border-color:var(--accent);transform:translateY(-3px)}
 .feature .n{font:12px var(--mono);color:var(--accent);margin-bottom:14px}
-.feature h4{margin:0 0 8px;font-size:17px}
+.feature h4{margin:0 0 8px;font-size:18px}
 .feature p{color:var(--muted);font-size:14px;margin:0}
 
-/* screenshots */
-.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:900px){.shots{grid-template-columns:1fr}}
-.shots figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.shots img{width:100%;height:230px;object-fit:cover;object-position:top;display:block;background:#111;transition:.4s}
-.shots figure:hover img{transform:scale(1.03)}
-.shots figcaption{padding:10px 14px;color:var(--muted);font-size:12px}
+/* gallery */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;padding:9px 16px;cursor:pointer;font-weight:600;transition:.2s}
+.tabs button:hover{color:var(--text)}
+.tabs button.on{border-color:var(--accent);color:var(--accent2);background:rgba(255,107,0,.1)}
+.gallery-main{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#0e1013;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.gallery-main img{width:100%;display:block;max-height:620px;object-fit:contain;background:#eee}
+.gcap{padding:12px 18px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+.thumbs{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin-top:12px}
+@media(max-width:980px){.thumbs{grid-template-columns:repeat(4,1fr)}}
+.thumbs button{padding:0;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--card);cursor:pointer;transition:.2s}
+.thumbs button.on{border-color:var(--accent);box-shadow:0 0 0 2px rgba(255,107,0,.25)}
+.thumbs img{width:100%;height:64px;object-fit:cover;object-position:top;display:block}
 
-/* final */
-.final{text-align:center;padding:86px 0}
-.final h2{font-size:clamp(30px,4vw,46px)}
-.final p{color:var(--muted);max-width:620px;margin:0 auto 28px}
+.final{text-align:center;padding:90px 0}
+.final h2{font-size:clamp(30px,4.2vw,50px)}
+.final p{color:var(--muted);max-width:640px;margin:0 auto 28px}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px}
 .foot-in{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
 .foot-in .sp{flex:1}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--accent);color:#fff;padding:11px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:99;font-weight:600}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,18px);background:var(--accent);color:#fff;padding:11px 18px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:99;font-weight:700}
+.toast.show{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
 <body>
+<div class="aurora"></div><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+
 <header><div class="wrap header-in">
   <a class="logo" href="#top"><i></i><div>СИМУЛЯТОР ГИБКИ ЛИСТА<small>PRESS BENDING SIMULATING</small></div></a>
   <nav>
-    <a href="#download">Скачать</a><a href="#features">Возможности</a><a href="#screens">Скриншоты</a>
-    <a href="CHANGELOG.md">История версий</a><a href="README.md">README</a>
+    <a href="#download">Скачать</a><a href="#lab">Лаборатория гибки</a><a href="#features">Возможности</a>
+    <a href="#screens">Скриншоты</a><a href="CHANGELOG.md">Changelog</a><a href="README.md">README</a>
   </nav>
 </div></header>
 
@@ -127,47 +171,25 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   <div>
     <div class="badges"><span class="badge hot">ВЕРСИЯ 3.4.1</span><span class="badge">ANDROID 8+</span><span class="badge">WINDOWS 10/11</span><span class="badge">ЛЮБОЙ БРАУЗЕР</span></div>
     <h1>Гибка листа<br><span>в деталях.</span></h1>
-    <p class="lead">Офлайн-симулятор листогибочного пресса. Соберите деталь, подберите пуансон и матрицу, посмотрите каждый гиб в 2D и 3D, проверьте столкновения и получите чертёж A4.</p>
+    <p class="lead">Офлайн-симулятор листогибочного пресса. Соберите деталь, подберите инструмент, посмотрите каждый гиб в 2D и 3D, проверьте столкновения и получите чертёж A4.</p>
     <div class="cta">
       <a class="btn primary" href="#download">⬇ Скачать 3.4.1</a>
-      <a class="btn" href="#features">Смотреть возможности</a>
+      <a class="btn" href="#lab">🧪 Попробовать гибку</a>
     </div>
-    <div class="version">Одна версия для трёх платформ · без интернета и регистрации · <b>RU / EN</b></div>
+    <div class="platforms" id="platforms">
+      <button class="pbtn active" data-p="web" style="--p:#ff6b00;--p2:#ffb277">🌐 Web</button>
+      <button class="pbtn" data-p="windows" style="--p:#6fb4ff;--p2:#b3daff">▣ Windows</button>
+      <button class="pbtn" data-p="android" style="--p:#7ddc6a;--p2:#c6f5bb">● Android</button>
+    </div>
+    <div class="mini-note">Один код — три цели · без интернета и регистрации · <b>RU / EN</b></div>
   </div>
-  <div class="scene" aria-label="3D-гибка листа">
-    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8b949e"/><stop offset="1" stop-color="#454c54"/></linearGradient>
-        <linearGradient id="steel2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6d7680"/><stop offset="1" stop-color="#343a41"/></linearGradient>
-        <linearGradient id="sheet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff8a2b"/><stop offset="1" stop-color="#e85d00"/></linearGradient>
-        <filter id="sh"><feGaussianBlur stdDeviation="14"/></filter>
-      </defs>
-      <ellipse cx="300" cy="500" rx="180" ry="34" fill="#000" opacity=".45" filter="url(#sh)"/>
-      <!-- die -->
-      <path d="M150 430 L450 430 L420 500 L180 500 Z" fill="url(#steel2)"/>
-      <path d="M180 430 L300 470 L420 430 L400 430 L300 458 L200 430 Z" fill="#2c3238"/>
-      <path d="M150 430 L200 430 L300 458 L180 500 Z" fill="url(#steel)" opacity=".85"/>
-      <path d="M450 430 L400 430 L300 458 L420 500 Z" fill="url(#steel)"/>
-      <!-- sheet -->
-      <path d="M205 372 L300 452 L395 372 L420 386 L300 480 L180 386 Z" fill="url(#sheet)"/>
-      <path d="M205 372 L300 452 L395 372" fill="none" stroke="#ffb37a" stroke-width="3"/>
-      <path d="M300 452 L300 480" stroke="#ffb37a" stroke-width="2"/>
-      <path class="glowline" d="M180 386 L300 468 L420 386" fill="none" stroke="#ff7a00" stroke-width="6" opacity=".7"/>
-      <!-- punch -->
-      <g class="punch">
-        <path d="M268 118 L332 118 L312 360 L288 360 Z" fill="url(#steel)"/>
-        <path d="M252 112 L348 112 L348 128 L252 128 Z" fill="#9aa4ae"/>
-        <path d="M288 360 L312 360 L306 378 L294 378 Z" fill="#b7c0c9"/>
-      </g>
-      <!-- dimensions -->
-      <g stroke="#7d8791" stroke-width="1.5" fill="none" opacity=".7">
-        <path d="M180 520 L420 520"/><path d="M180 512 L180 528"/><path d="M420 512 L420 528"/>
-        <path d="M470 372 L470 452"/><path d="M462 372 L478 372"/><path d="M462 452 L478 452"/>
-      </g>
-      <text x="300" y="546" fill="#9aa1a9" font-size="18" font-family="Consolas,monospace" text-anchor="middle">V = 12 mm</text>
-      <text x="492" y="418" fill="#9aa1a9" font-size="18" font-family="Consolas,monospace">90°</text>
-      <text x="52" y="70" fill="#ff6b00" font-size="14" font-family="Consolas,monospace" letter-spacing="2">3D BENDING / LIVE</text>
-    </svg>
+  <div class="stage">
+    <div class="frame" id="frame">
+      <div class="bar"><i></i><i></i><i></i><span id="frameLabel">WEB · 3.4.0</span></div>
+      <img id="heroImg" src="screenshots/web-3.4.0-bending-3d.png" alt="Симулятор">
+    </div>
+    <div class="float f1">90° · R2.56 · s2</div>
+    <div class="float f2">71 TESTS / PASS</div>
   </div>
 </div></section>
 
@@ -176,33 +198,63 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   <h2>Выберите свою платформу</h2>
   <p class="sub">Официальные сборки 3.4.1. Файлы те же, что проходили тестирование как 3.3.3.3: нативные сборки переименованы без изменений, веб-версия собрана из исходников 3.3.3.3.</p>
   <div class="cards">
-    <!-- ANDROID -->
-    <article class="card">
-      <div class="pico"><svg viewBox="0 0 24 24" fill="#8fd66a"><path d="M6 9h12v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9Zm-1 0a1.5 1.5 0 1 1 3 0v1H5V9Zm11 0a1.5 1.5 0 1 1 3 0v1h-3V9ZM7 3.5 8.6 6h6.8L17 3.5l1 .6-1.2 2.6c1 .6 1.6 1.6 1.6 2.8H5.6c0-1.2.6-2.2 1.6-2.8L6 4.1l1-.6Z"/><circle cx="9.5" cy="13" r="1" fill="#18191c"/><circle cx="14.5" cy="13" r="1" fill="#18191c"/></svg></div>
-      <h3>Android</h3><div class="tagline">Телефон или планшет, Android 8.0+. Установка из APK, данных предыдущих версий.</div>
+    <article class="card" data-p="android">
+      <div class="pico"><svg viewBox="0 0 24 24" fill="var(--green)"><path d="M6 9h12v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9Zm-1 0a1.5 1.5 0 1 1 3 0v1H5V9Zm11 0a1.5 1.5 0 1 1 3 0v1h-3V9ZM7 3.5 8.6 6h6.8L17 3.5l1 .6-1.2 2.6c1 .6 1.6 1.6 1.6 2.8H5.6c0-1.2.6-2.2 1.6-2.8L6 4.1l1-.6Z"/><circle cx="9.5" cy="13" r="1" fill="#18191c"/><circle cx="14.5" cy="13" r="1" fill="#18191c"/></svg></div>
+      <h3>Android</h3><div class="tagline">Телефон или планшет, Android 8.0+. Ставится поверх предыдущих версий, данные сохраняются.</div>
       <div class="file">GibGib-Sim-3.4.0-universal.apk</div>
       <div class="hash"><code>e39ba07b43af40fd9f6793a5b53d6c83fc24b8bac028324b7e50c93a06d439a7</code><button class="copy">copy</button></div>
       <a class="btn primary" href="https://github.com/frikks/gibgib-sim/releases/latest">⬇ Скачать APK</a>
       <details><summary>Как установить</summary><ol><li>Скачайте universal.apk.</li><li>Откройте файл на телефоне.</li><li>Разрешите установку из источника и нажмите «Установить».</li></ol><p>`.apks` — для SAI/bundletool.</p></details>
     </article>
-    <!-- WINDOWS -->
-    <article class="card">
-      <div class="pico"><svg viewBox="0 0 24 24" fill="#79b8ff"><path d="M2 4.5 10.5 3.3v8.2H2V4.5Zm9.5-1.4L22 2v9.5h-10.5V3.1ZM2 12.5h8.5v8.2L2 19.5v-7Zm9.5 0H22V22l-10.5-1.5v-8Z"/></svg></div>
+    <article class="card" data-p="windows">
+      <div class="pico"><svg viewBox="0 0 24 24" fill="var(--blue)"><path d="M2 4.5 10.5 3.3v8.2H2V4.5Zm9.5-1.4L22 2v9.5h-10.5V3.1ZM2 12.5h8.5v8.2L2 19.5v-7Zm9.5 0H22V22l-10.5-1.5v-8Z"/></svg></div>
       <h3>Windows</h3><div class="tagline">EXE без установки или MSIX-пакет для Windows 11 x64 с тестовым сертификатом.</div>
       <div class="file">GibGib-Sim-3.4.0-Windows-x64.exe</div>
       <div class="hash"><code>8339e3b04f2afe5f72521c2c958a2f17c3c7cfed42ac2d99f75798df206467fb</code><button class="copy">copy</button></div>
       <a class="btn primary" href="https://github.com/frikks/gibgib-sim/releases/latest">⬇ Скачать EXE</a>
-      <details><summary>MSIX и сертификат</summary><p>MSIX подписан самоподписанным тестовым сертификатом. Полная инструкция и отпечаток сертификата — в <a href="windows/README.md" style="color:var(--accent2)">windows/README.md</a>.</p></details>
+      <details><summary>MSIX и сертификат</summary><p>MSIX подписан самоподписанным тестовым сертификатом. Инструкция и отпечаток — в <a href="windows/README.md" style="color:var(--accent2)">windows/README.md</a>.</p></details>
     </article>
-    <!-- WEB -->
-    <article class="card">
-      <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="#ff9d4d" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div>
-      <h3>Web / браузер</h3><div class="tagline">Полное приложение в одном HTML-файле. Открывается на Windows, macOS, Linux, Android и iOS.</div>
-      <div class="file">GibGib-Sim-3.4.0.html · ~8,6 МБ</div>
+    <article class="card" data-p="web">
+      <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div>
+      <h3>Web / браузер</h3><div class="tagline">Полное приложение в одном HTML-файле (~8,6 МБ). Открывается на любой ОС без установки.</div>
+      <div class="file">GibGib-Sim-3.4.0.html</div>
       <div class="hash"><code>fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539</code><button class="copy">copy</button></div>
       <a class="btn primary" href="GibGib-Sim-3.4.0.html">▶ Открыть веб-версию</a>
-      <details><summary>Как пользоваться</summary><p>Скачайте HTML и откройте двойным щелчком. Всё уже внутри: код, шрифты и графика. Интернет не нужен.</p></details>
+      <details><summary>Как пользоваться</summary><p>Скачайте HTML и откройте двойным щелчком. Код, шрифты и графика уже внутри — интернет не нужен.</p></details>
     </article>
+  </div>
+</div></section>
+
+<section id="lab"><div class="wrap">
+  <div class="eyebrow">Интерактив</div>
+  <h2>Лаборатория гибки</h2>
+  <p class="sub">Двигайте ползунки — схема и расчёт развёртки меняются в реальном времени. Упрощённая модель: s = 2 мм, R = 2,56 мм, две полки по 100 мм.</p>
+  <div class="lab">
+    <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9d4d"/><stop offset="1" stop-color="#ff5a00"/></linearGradient></defs>
+      <g stroke="#39414b" stroke-width="1">
+        <path d="M0 60H520M0 120H520M0 180H520M0 240H520M0 300H520"/>
+        <path d="M60 0V360M120 0V360M180 0V360M240 0V360M300 0V360M360 0V360M420 0V360M480 0V360"/>
+      </g>
+      <path d="M150 300 L370 300 L340 340 L180 340 Z" fill="#3c444d" stroke="#68737f" stroke-width="2"/>
+      <polyline id="sheet" points="200,110 260,250 320,110" fill="none" stroke="url(#sh)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+      <polyline id="sheetInner" points="200,110 260,250 320,110" fill="none" stroke="#ffd0a3" stroke-width="2" stroke-linejoin="round" opacity=".8"/>
+      <line id="bendline" x1="260" y1="250" x2="260" y2="80" stroke="#35d6e8" stroke-width="2" stroke-dasharray="6 6"/>
+      <text x="260" y="62" fill="#35d6e8" font-size="15" font-family="Consolas,monospace" text-anchor="middle" id="angLabel">90°</text>
+      <text x="24" y="34" fill="#ff9d4d" font-size="13" font-family="Consolas,monospace">LIVE GEOMETRY</text>
+    </svg>
+    <div class="ctrl">
+      <label>Угол гиба A <b id="angVal">90°</b></label>
+      <input type="range" id="ang" min="30" max="170" value="90">
+      <label>K-фактор <b id="kVal">0.42</b></label>
+      <input type="range" id="k" min="20" max="50" value="42">
+      <div class="readout">
+        <div><span>Припуск BA</span><b id="ba">—</b></div>
+        <div><span>Длина заготовки</span><b id="flat">—</b></div>
+        <div><span>Сгибов</span><b>1</b></div>
+      </div>
+      <p style="color:var(--muted);font-size:13px;margin-top:22px">BA = π·(180−A)/180 · (R + K·s). Расчёт справочный — перед гибкой сверяйтесь с реальными чертежами.</p>
+    </div>
   </div>
 </div></section>
 
@@ -211,27 +263,22 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   <h2>От профиля до чертежа</h2>
   <p class="sub">Одна деталь общая для всех вкладок: изменения сразу видны в симуляции, развёртке и расчётах.</p>
   <div class="grid">
-    <div class="feature"><div class="n">01 / ДЕТАЛЬ</div><h4>Профили и геометрия</h4><p>Уголок, П, C, G, Z/S, омега, подгиб и ступени. Толщина, внутренний радиус, K-фактор, таблица полок и ручной профиль.</p></div>
-    <div class="feature"><div class="n">02 / ГИБКА</div><h4>2D + 3D анимация</h4><p>Каждый гиб по шагам, плющение, проверка столкновений, недогибы, пружинение и подбор порядка с учётом всех углов.</p></div>
-    <div class="feature"><div class="n">03 / ИНСТРУМЕНТ</div><h4>500 + 500</h4><p>Библиотека пуансонов и матриц, 24 комплекта для подгибки, поиск, избранное ⭐ и автоматический подбор пары.</p></div>
-    <div class="feature"><div class="n">04 / РАСЧЁТ</div><h4>Развёртка и K-фактор</h4><p>OSSB, припуск BA, вычет BD, координаты линий гиба и обратный расчёт K по пробному гибу. Экспорт TXT/CSV/RTF.</p></div>
-    <div class="feature"><div class="n">05 / ДОКУМЕНТЫ</div><h4>Чертёж A4</h4><p>Сечение с размерами, изометрия, развёртка, таблица гибов, основная надпись. PDF (вектор), PNG 200 dpi и печать.</p></div>
-    <div class="feature"><div class="n">06 / ПЛАТФОРМЫ</div><h4>Один код — три цели</h4><p>Нативные сборки на Rust и веб-сборка WebAssembly. Русский и английский языки, тёмные и светлые темы.</p></div>
+    <div class="feature"><div class="n">01 / ДЕТАЛЬ</div><h4>Профили и геометрия</h4><p>Уголок, П, C, G, Z/S, омега, подгиб и ступени. Толщина, радиус, K-фактор и ручной профиль.</p></div>
+    <div class="feature"><div class="n">02 / ГИБКА</div><h4>2D + 3D анимация</h4><p>Каждый гиб по шагам, плющение, проверка столкновений, недогибы, пружинение и подбор порядка.</p></div>
+    <div class="feature"><div class="n">03 / ИНСТРУМЕНТ</div><h4>500 + 500</h4><p>Библиотека пуансонов и матриц, поиск, избранное ⭐ и автоматический подбор пары под деталь.</p></div>
+    <div class="feature"><div class="n">04 / РАСЧЁТ</div><h4>Развёртка и K-фактор</h4><p>OSSB, припуск BA, вычет BD, координаты линий гиба и обратный расчёт K по пробному гибу.</p></div>
+    <div class="feature"><div class="n">05 / ДОКУМЕНТЫ</div><h4>Чертёж A4</h4><p>Сечение, изометрия, развёртка, таблица гибов и основная надпись. PDF, PNG 200 dpi и печать.</p></div>
+    <div class="feature"><div class="n">06 / ПЛАТФОРМЫ</div><h4>Один код — три цели</h4><p>Нативные сборки на Rust и веб-сборка WebAssembly. RU/EN, светлая и тёмная темы.</p></div>
   </div>
 </div></section>
 
 <section id="screens"><div class="wrap">
-  <div class="eyebrow">Скриншоты</div>
-  <h2>Интерфейс 3.3.3 / 3.4.0</h2>
-  <p class="sub">Снимки демонстрируют интерфейс 3.3.3; в 3.4.0 добавлены вкладки «Проекты · Деталь · Гибка · Инструмент · Расчёт · Документы».</p>
-  <div class="shots">
-    <figure><img src="screenshots/simulator-3.3.3.png" alt="Симулятор"><figcaption>Симулятор</figcaption></figure>
-    <figure><img src="screenshots/part-3.3.3.png" alt="Деталь"><figcaption>Деталь</figcaption></figure>
-    <figure><img src="screenshots/tools-3.3.3.png" alt="Инструмент"><figcaption>Инструмент</figcaption></figure>
-    <figure><img src="screenshots/flat-3.3.3.png" alt="Развёртка"><figcaption>Развёртка</figcaption></figure>
-    <figure><img src="screenshots/kfactor-3.3.3.png" alt="K-фактор"><figcaption>K-фактор</figcaption></figure>
-    <figure><img src="screenshots/drawing-a4.png" alt="Чертёж"><figcaption>Чертёж A4</figcaption></figure>
-  </div>
+  <div class="eyebrow">Скриншоты 3.4.0</div>
+  <h2>Живой интерфейс</h2>
+  <p class="sub">Новые снимки веб- и Windows-сборки 3.4.0. Нажмите на категорию или миниатюру, чтобы открыть снимок целиком.</p>
+  <div class="tabs" id="gTabs"></div>
+  <div class="gallery-main"><img id="gImg" src="screenshots/web-3.4.0-bending-3d.png" alt="Скриншот"><div class="gcap" id="gCap"></div></div>
+  <div class="thumbs" id="gThumbs"></div>
 </div></section>
 
 <section class="final"><div class="wrap">
@@ -242,17 +289,80 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 </div></section>
 
 <footer><div class="wrap foot-in">
-  <span>© 2026 @Frikks · Notion AI</span>
-  <span class="sp"></span>
+  <span>© 2026 @Frikks · Notion AI</span><span class="sp"></span>
   <a href="README.md">README</a><a href="CHANGELOG.md">Changelog</a><a href="LICENSE">License</a><a href="https://t.me/Frikks">Telegram</a>
 </div></footer>
 <div class="toast" id="toast">Скопировано</div>
+
 <script>
+const shots = [
+  {g:'Гибка',   src:'screenshots/web-3.4.0-bending-3d.png', cap:'Гибка · 3D-вид с анимацией и проверкой столкновений'},
+  {g:'Гибка',   src:'screenshots/web-3.4.0-bending-2d.png', cap:'Гибка · 2D-сечение и последовательность гибов'},
+  {g:'Деталь',  src:'screenshots/web-3.4.0-part.png',       cap:'Деталь · профиль, полки, материалы и покадровый просмотр'},
+  {g:'Инструмент',src:'screenshots/web-3.4.0-tooling.png',  cap:'Инструмент · 1000 позиций, поиск, избранное и подбор'},
+  {g:'Расчёт',  src:'screenshots/web-3.4.0-calculation.png', cap:'Расчёт · развёртка, припуски и координаты линий гиба'},
+  {g:'Документы',src:'screenshots/web-3.4.0-documents.png', cap:'Документы · чертёж A4 и экспорт'},
+  {g:'Проекты', src:'screenshots/web-3.4.0-projects.png',   cap:'Проекты · сохранённые детали и настройки'},
+  {g:'Windows', src:'screenshots/windows-3.4.0-desktop.png',cap:'Windows · десктопная сборка на Windows 11'}
+];
+const tabs = document.getElementById('gTabs'), thumbs = document.getElementById('gThumbs');
+const groups = [...new Set(shots.map(s=>s.g))];
+let current = 0;
+groups.forEach((g,i)=>{
+  const b=document.createElement('button'); b.textContent=g; if(i===0)b.className='on';
+  b.onclick=()=>{ [...tabs.children].forEach(x=>x.classList.remove('on')); b.classList.add('on');
+    const idx=shots.findIndex(s=>s.g===g); if(idx>=0) show(idx); };
+  tabs.appendChild(b);
+});
+shots.forEach((s,i)=>{
+  const b=document.createElement('button'); const im=document.createElement('img');
+  im.src=s.src; im.alt=s.cap; b.appendChild(im); b.onclick=()=>show(i); thumbs.appendChild(b);
+});
+function show(i){
+  current=i;
+  const im=document.getElementById('gImg'); im.style.opacity=0;
+  setTimeout(()=>{ im.src=shots[i].src; im.style.opacity=1; },140);
+  document.getElementById('gCap').textContent=shots[i].cap;
+  [...thumbs.children].forEach((b,n)=>b.classList.toggle('on',n===i));
+}
+show(0);
+
+// hero platform switcher
+const heroData={
+  web:{img:'screenshots/web-3.4.0-bending-3d.png',label:'WEB · 3.4.0',accent:'#ff6b00',accent2:'#ffb277'},
+  windows:{img:'screenshots/windows-3.4.0-desktop.png',label:'WINDOWS 11 · 3.4.0',accent:'#6fb4ff',accent2:'#b3daff'},
+  android:{img:'screenshots/web-3.4.0-part.png',label:'ANDROID · 3.4.0',accent:'#7ddc6a',accent2:'#c6f5bb'}
+};
+document.querySelectorAll('.pbtn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.pbtn').forEach(x=>x.classList.remove('active')); b.classList.add('active');
+  const d=heroData[b.dataset.p], hi=document.getElementById('heroImg');
+  hi.style.opacity=0; setTimeout(()=>{hi.src=d.img;hi.style.opacity=1;},160);
+  document.getElementById('frameLabel').textContent=d.label;
+  document.documentElement.style.setProperty('--accent',d.accent);
+  document.documentElement.style.setProperty('--accent2',d.accent2);
+});
+
+// interactive bend geometry
+const ang=document.getElementById('ang'), kf=document.getElementById('k'), sheet=document.getElementById('sheet'), inner=document.getElementById('sheetInner');
+function upd(){
+  const A=+ang.value, K=+kf.value/100, R=2.56, s=2, L=118, cx=260, cy=250;
+  const a=(A/2)*Math.PI/180;
+  const lx=cx-L*Math.sin(a), ly=cy-L*Math.cos(a), rx=cx+L*Math.sin(a);
+  const pts=[[lx.toFixed(1),ly.toFixed(1)],[cx,cy],[rx.toFixed(1),ly.toFixed(1)]].map(p=>p.join(',')).join(' ');
+  sheet.setAttribute('points',pts); inner.setAttribute('points',pts);
+  document.getElementById('angVal').textContent=A+'°';
+  document.getElementById('angLabel').textContent=A+'°';
+  document.getElementById('kVal').textContent=K.toFixed(2);
+  const ba=Math.PI*(180-A)/180*(R+K*s);
+  document.getElementById('ba').textContent=ba.toFixed(2)+' мм';
+  document.getElementById('flat').textContent=(200+ba).toFixed(2)+' мм';
+}
+ang.oninput=kf.oninput=upd; upd();
+
+// copy hashes
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
   const v=b.parentElement.querySelector('code').textContent.trim();
-  try{await navigator.clipboard.writeText(v)}catch(e){
-    const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();
-  }
+  try{await navigator.clipboard.writeText(v)}catch(e){const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
   const el=document.getElementById('toast');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1600);
 }));
 </script>
