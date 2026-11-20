@@ -12,7 +12,7 @@
 | **Windows** | `GibGib-Sim-3.4.0-Windows-x64.exe` (или `.msix` + сертификат) | [windows/README.md](windows/README.md) |
 | **Любая ОС (браузер)** | `GibGib-Sim-3.4.0.html` — полноценное приложение в одном файле, ~8,6 МБ | [Веб-версия](#веб-версия-340) |
 
-> Исходный код настольной программы не публикуется. Веб-версия — справочная реализация по этой документации, а не перенос исходного кода.
+> Исходный код не публикуется. Веб-сборка получена из того же кода 3.3.3.3, что и нативные сборки, и публикуется только готовым HTML-файлом.
 
 ### Веб-версия 3.4.0
 
@@ -23,6 +23,8 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 Как и десктопная версия, она не управляет станком.
 
 ---
+
+*Скриншоты демонстрируют интерфейс 3.3.3; в 3.4.0 добавлены нижние вкладки «Проекты · Деталь · Гибка · Инструмент · Расчёт · Документы».*
 
 <p align="center">
   <img src="screenshots/simulator-3.3.3.png" width="19%" alt="Симулятор">
@@ -59,7 +61,7 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 5. **Подбор инструмента начинается с одноручьевых матриц**; двух- и четырёхручьевые (2V, 4V) рассматриваются только если одноручьевыми найти порядок не удалось.
 6. Ранее в линейке 3.3.3.x: новые вкладки, проекты, карта наладки, пружинение, усилие, способы гибки, материалы и свой инструмент.
 
-Проверено 71 автотестом и `clippy` без предупреждений. Подробности — в [CHANGELOG.md](CHANGELOG.md).
+В исходном проекте — 71 автотест и `clippy` без предупреждений. Веб-сборка дополнительно проверена запуском в браузере (все вкладки, 2D/3D и анимация гибки). На реальном телефоне и в Windows сборка 3.4.0 отдельно не проверялась. Подробности — в [CHANGELOG.md](CHANGELOG.md).
 
 <details>
 <summary>Что было в 3.3.3</summary>
@@ -122,7 +124,7 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 
 ## Контрольные суммы SHA-256
 
-Файлы 3.4.0 — это те же бинарники, что проходили тестирование как 3.3.3.3, переименованные для стабильного релиза; содержимое не менялось.
+Нативные файлы 3.4.0 (APK/APKS/EXE/MSIX/CER) — это те же бинарники, что проходили тестирование как 3.3.3.3, переименованные без изменения содержимого. Веб-версия пересобрана из исходников 3.3.3.3 и имеет собственный SHA-256.
 
 | Файл | SHA-256 |
 |---|---|
@@ -157,13 +159,15 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 
 ## English
 
-**Press Bending Simulating** is an offline press brake simulator for **Android and Windows**. Build a sheet metal part, pick a punch and die, watch every bend in 2D and 3D, check collisions, calculate the flat pattern (OSSB, BA, BD), get a K-factor and export an A4 drawing as PDF/PNG. No internet, no ads, RU/EN interface.
+**Press Bending Simulating** is an offline press brake simulator for **Android, Windows and any browser**. Build a sheet metal part, pick a punch and die, watch every bend in 2D and 3D, check collisions, calculate the flat pattern (OSSB, BA, BD), get a K-factor and export an A4 drawing as PDF/PNG. No internet, no ads, RU/EN interface.
 
 - 500 punches + 500 dies (400 manufacturer contours, 24 hemming sets), favourites and automatic selection.
 - Bending/hemming animation, collision checks, automatic bend sequence search, machine setup.
 - Projects, tooling map, springback, bending force, custom tooling and all under-bend angles were added in the 3.3.3.x line.
-- **3.4.0** promotes the tested 3.3.3.3 build to a stable release with a single version number for both platforms.
+- **3.4.0** promotes the tested 3.3.3.3 build to a stable release with a single version number for all platforms.
+- **Web edition:** `GibGib-Sim-3.4.0.html` is the full application compiled from the 3.3.3.3 source to WebAssembly (Rust + eframe/egui). Open the file in any browser on Windows, macOS, Linux, Android or iOS — no installation. SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
+- **Windows:** run the unsigned `GibGib-Sim-3.4.0-Windows-x64.exe` without installation, or install the MSIX package with the test certificate (see [windows/README.md](windows/README.md) for the PowerShell commands and certificate thumbprint).
 
-[Download 3.4.0](https://github.com/frikks/gibgib-sim/releases/latest) · [Windows details](windows/README.md) · [Changelog](CHANGELOG.md) · SHA-256 checksums are listed above.
+Native files are the unchanged 3.3.3.3 binaries renamed for the stable release; the web edition was rebuilt from source and has its own checksum. The source code is not published; only the finished HTML file is distributed.
 
-This is an educational tool, not a machine control or safety system. © 2026 @Frikks. All rights reserved. See [LICENSE](LICENSE).
+The web build was smoke-tested in a browser; 3.4.0 was not separately tested on a real phone or in Windows. This is an educational tool, not a machine control or safety system. © 2026 @Frikks. All rights reserved. See [LICENSE](LICENSE).
