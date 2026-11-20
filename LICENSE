@@ -3,7 +3,7 @@
 © 2026 @Frikks (https://t.me/Frikks). Все права защищены.
 
 Программа «Симулятор Гибки Листа» (Press Bending Simulating), её файлы
-APK/APKS, исходный код, библиотека инструмента, изображения, тексты и
+APK/APKS, EXE, MSIX, CER, HTML, исходный код, библиотека инструмента, изображения, тексты и
 другие материалы этого репозитория (далее — «Программа») защищены
 авторским правом. Все права, прямо не предоставленные этим соглашением,
 сохраняются за правообладателем.
@@ -16,7 +16,7 @@ APK/APKS, исходный код, библиотека инструмента, 
 2. Что запрещено без предварительного письменного разрешения
    правообладателя
    а) копировать и распространять Программу или её части, в том числе
-      выкладывать файлы APK/APKS на других сайтах, в каналах, облачных
+      выкладывать файлы APK/APKS, EXE, MSIX, CER и HTML на других сайтах, в каналах, облачных
       хранилищах и магазинах приложений;
    б) изменять Программу, создавать на её основе производные версии,
       переводы и сборки;
@@ -58,7 +58,7 @@ LICENSE AGREEMENT — PRESS BENDING SIMULATING
 
 © 2026 @Frikks (https://t.me/Frikks). All rights reserved.
 
-The "Press Bending Simulating" application, its APK/APKS files, source
+The "Press Bending Simulating" application, its APK/APKS, EXE, MSIX, CER and HTML files, source
 code, tooling library, images, texts and other materials in this
 repository (the "Software") are protected by copyright. All rights not
 expressly granted here are reserved.
@@ -69,7 +69,7 @@ expressly granted here are reserved.
 
 2. Without the copyright holder's prior written permission you may not:
    (a) copy or redistribute the Software or any part of it, including
-       uploading the APK/APKS files to other websites, channels, cloud
+       uploading the APK/APKS, EXE, MSIX, CER and HTML files to other websites, channels, cloud
        storage or app stores;
    (b) modify the Software or create derivative works, translations or
        builds based on it;
