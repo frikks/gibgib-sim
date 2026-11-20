@@ -4,7 +4,7 @@
 
 **Текущая версия: 3.4.0** · Android 8.0+ · Windows 10/11 x64 · русский и английский интерфейс
 
-### [⬇️ Скачать 3.4.0](https://github.com/frikks/gibgib-sim/releases/latest)
+### [⬇️ Скачать 3.4.0](https://github.com/frikks/gibgib-sim/releases/latest) · [🌐 Сайт проекта](https://frikks.github.io/gibgib-sim/)
 
 | Платформа | Готовый файл | Подробнее |
 |---|---|---|
