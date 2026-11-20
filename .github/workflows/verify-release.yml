@@ -13,14 +13,14 @@ jobs:
 
       - name: Verify web edition SHA-256
         run: |
-          expected="fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539"
+          expected="0750594864bd0b5aebb2e2ad1a549842e42ea11ee5335da9f966ac8582f14b9e"
           actual="$(sha256sum GibGib-Sim-3.4.0.html | cut -d' ' -f1)"
           echo "actual=$actual"
           test "$actual" = "$expected"
 
       - name: Verify checksum references in docs
         run: |
-          expected="fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539"
+          expected="0750594864bd0b5aebb2e2ad1a549842e42ea11ee5335da9f966ac8582f14b9e"
           grep -q "$expected" README.md
           grep -q "$expected" CHANGELOG.md
           if grep -q "70f71669" README.md CHANGELOG.md; then

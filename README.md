@@ -18,7 +18,7 @@
 
 Файл `GibGib-Sim-3.4.0.html` из релиза открывается двойным щелчком в любом браузере на Windows, macOS, Linux, Android и iOS — без установки и внешних файлов. Это **полная веб-версия**, собранная из исходного кода 3.3.3.3 в WebAssembly (Rust + eframe/egui), а не упрощённая страница. Работают вкладки «Проекты / Деталь / Гибка / Инструмент / Расчёт / Документы», 2D-сечение и 3D-вид с анимацией гибки, недогибы и пружинение, материалы, карта наладки, библиотека из 1000 инструментов, автоподбор, развёртка, K-фактор, чертёж A4, экспорт PDF/PNG/TXT/CSV/RTF, русский и английский языки.
 
-SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
+SHA-256: `0750594864bd0b5aebb2e2ad1a549842e42ea11ee5335da9f966ac8582f14b9e`.
 
 Как и десктопная версия, она не управляет станком.
 
@@ -133,7 +133,7 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 | `GibGib-Sim-3.4.0-Windows-x64.exe` | `8339e3b04f2afe5f72521c2c958a2f17c3c7cfed42ac2d99f75798df206467fb` |
 | `GibGib-Sim-3.4.0-Windows11-x64-TEST.msix` | `876128c7a61b544cb6680fe34fd4617051f5c697c8eecc0b49c54b88e286e1e3` |
 | `GibGib-Sim-Windows-TEST-2026.cer` | `404bc3395192697c78c3c9d32d41aef8920c52a4f01ca898eec7e5812d7364f4` |
-| `GibGib-Sim-3.4.0.html` | `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539` |
+| `GibGib-Sim-3.4.0.html` | `0750594864bd0b5aebb2e2ad1a549842e42ea11ee5335da9f966ac8582f14b9e` |
 
 Проверить: `Get-FileHash <файл> -Algorithm SHA256` (PowerShell) или `sha256sum <файл>` (Linux/macOS).
 
@@ -153,7 +153,7 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 
 ## Лицензия
 
-© 2026 [@Frikks](https://t.me/Frikks) · Notion AI. Все права защищены, исходный код не публикуется. Бесплатное скачивание и использование официальных сборок разрешены; копирование, распространение, изменение и форки — только с письменного разрешения автора. См. [LICENSE](LICENSE) и [лицензии сторонних компонентов](windows/THIRD-PARTY-LICENSES.txt).
+© 2026 [@Frikks](https://t.me/Frikks). Все права защищены, исходный код не публикуется. Бесплатное скачивание и использование официальных сборок разрешены; копирование, распространение, изменение и форки — только с письменного разрешения автора. См. [LICENSE](LICENSE) и [лицензии сторонних компонентов](windows/THIRD-PARTY-LICENSES.txt).
 
 ---
 
@@ -165,7 +165,7 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 - Bending/hemming animation, collision checks, automatic bend sequence search, machine setup.
 - Projects, tooling map, springback, bending force, custom tooling and all under-bend angles were added in the 3.3.3.x line.
 - **3.4.0** promotes the tested 3.3.3.3 build to a stable release with a single version number for all platforms.
-- **Web edition:** `GibGib-Sim-3.4.0.html` is the full application compiled from the 3.3.3.3 source to WebAssembly (Rust + eframe/egui). Open the file in any browser on Windows, macOS, Linux, Android or iOS — no installation. SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
+- **Web edition:** `GibGib-Sim-3.4.0.html` is the full application compiled from the 3.3.3.3 source to WebAssembly (Rust + eframe/egui). Open the file in any browser on Windows, macOS, Linux, Android or iOS — no installation. SHA-256: `0750594864bd0b5aebb2e2ad1a549842e42ea11ee5335da9f966ac8582f14b9e`.
 - **Windows:** run the unsigned `GibGib-Sim-3.4.0-Windows-x64.exe` without installation, or install the MSIX package with the test certificate (see [windows/README.md](windows/README.md) for the PowerShell commands and certificate thumbprint).
 
 Native files are the unchanged 3.3.3.3 binaries renamed for the stable release; the web edition was rebuilt from source and has its own checksum. The source code is not published; only the finished HTML file is distributed.
