@@ -61,7 +61,7 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 5. **Подбор инструмента начинается с одноручьевых матриц**; двух- и четырёхручьевые (2V, 4V) рассматриваются только если одноручьевыми найти порядок не удалось.
 6. Ранее в линейке 3.3.3.x: новые вкладки, проекты, карта наладки, пружинение, усилие, способы гибки, материалы и свой инструмент.
 
-В исходном проекте — 71 автотест и `clippy` без предупреждений. Веб-сборка дополнительно проверена запуском в браузере (все вкладки, 2D/3D и анимация гибки). На реальном телефоне и в Windows сборка 3.4.0 отдельно не проверялась. Подробности — в [CHANGELOG.md](CHANGELOG.md).
+В исходном проекте — 71 автотест. Веб-сборка проверена запуском в браузере (все вкладки, 2D/3D и анимация гибки). EXE запущен и визуально проверен на Windows 11. На реальном телефоне сборка 3.4.0 не проверялась. Подробности — в [CHANGELOG.md](CHANGELOG.md).
 
 <details>
 <summary>Что было в 3.3.3</summary>
@@ -170,4 +170,4 @@ SHA-256: `fc2abd879208fc48945b945dc59941a7ff4c0d0b3f422b4c8255134c25f58539`.
 
 Native files are the unchanged 3.3.3.3 binaries renamed for the stable release; the web edition was rebuilt from source and has its own checksum. The source code is not published; only the finished HTML file is distributed.
 
-The web build was smoke-tested in a browser; 3.4.0 was not separately tested on a real phone or in Windows. This is an educational tool, not a machine control or safety system. © 2026 @Frikks. All rights reserved. See [LICENSE](LICENSE).
+The web build was smoke-tested in a browser and the Windows EXE was launched and visually checked on Windows 11; 3.4.0 was not tested on a real phone. This is an educational tool, not a machine control or safety system. © 2026 @Frikks. All rights reserved. See [LICENSE](LICENSE).
