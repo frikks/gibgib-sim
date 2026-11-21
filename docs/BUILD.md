@@ -38,7 +38,7 @@ python3 build_wasm_html.py   # встраивает .js и base64 .wasm в од�
 Ожидаемый SHA-256 готового файла:
 
 ```
-0750594864bd0b5aebb2e2ad1a549842e42ea11ee5335da9f966ac8582f14b9e
+ba1e87c82d7a86acc466f9b5b429dc3d505f5af44beaa66d04c973709f4b573e
 ```
 
 Проверка:
