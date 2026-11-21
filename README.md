@@ -63,7 +63,7 @@ SHA-256: `ab376799b5cc1cbe646569a1f9a8be3d36821bb42ccdd0720ee0d01feab09c71`.
 5. **Подбор инструмента начинается с одноручьевых матриц**; двух- и четырёхручьевые (2V, 4V) рассматриваются только если одноручьевыми найти порядок не удалось.
 6. Ранее в линейке 3.3.3.x: новые вкладки, проекты, карта наладки, пружинение, усилие, способы гибки, материалы и свой инструмент.
 
-В исходном проекте — 71 автотест. Веб-сборка проверена запуском в браузере (все вкладки, 2D/3D и анимация гибки). EXE запущен и визуально проверен на Windows 11. На реальном телефоне сборка 3.4.0 не проверялась. Подробности — в [CHANGELOG.md](CHANGELOG.md).
+В исходном проекте — 71 автотест. Веб-сборка проверена запуском в браузере (все вкладки, 2D/3D и анимация гибки). EXE запущен и визуально проверен на Windows 11. APK 3.4.2 установлен и проверен пользователем на реальном телефоне: нижние кнопки в окне рисования профиля не перекрываются системной панелью. Подробности — в [CHANGELOG.md](CHANGELOG.md).
 
 <details>
 <summary>Что было в 3.3.3</summary>
@@ -172,4 +172,4 @@ APK/APKS 3.4.2 пересобраны с исправлением нижних �
 
 Native files are the unchanged 3.3.3.3 binaries renamed for the stable release; the web edition was rebuilt from source and has its own checksum. The source code is not published; only the finished HTML file is distributed.
 
-The web build was smoke-tested in a browser and the Windows EXE was launched and visually checked on Windows 11; 3.4.0 was not tested on a real phone. This is an educational tool, not a machine control or safety system. © 2026 @Frikks. All rights reserved. See [LICENSE](LICENSE).
+The web build was smoke-tested in a browser, the Windows EXE was launched and visually checked on Windows 11, and APK 3.4.2 was installed and checked by the author on a real phone (the bottom buttons in the profile drawing dialog are no longer covered by the system bar). This is an educational tool, not a machine control or safety system. © 2026 @Frikks. All rights reserved. See [LICENSE](LICENSE).
