@@ -169,11 +169,11 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 
 <section class="hero" id="top"><div class="wrap hero-in">
   <div>
-    <div class="badges"><span class="badge hot">ВЕРСИЯ 3.4.1</span><span class="badge">ANDROID 8+</span><span class="badge">WINDOWS 10/11</span><span class="badge">ЛЮБОЙ БРАУЗЕР</span></div>
+    <div class="badges"><span class="badge hot" id="verBadge">ВЕРСИЯ 3.4.1</span><span class="badge">ANDROID 8+</span><span class="badge">WINDOWS 10/11</span><span class="badge">ЛЮБОЙ БРАУЗЕР</span></div>
     <h1>Гибка листа<br><span>в деталях.</span></h1>
     <p class="lead">Офлайн-симулятор листогибочного пресса. Соберите деталь, подберите инструмент, посмотрите каждый гиб в 2D и 3D, проверьте столкновения и получите чертёж A4.</p>
     <div class="cta">
-      <a class="btn primary" href="#download">⬇ Скачать 3.4.1</a>
+      <a class="btn primary" href="#download" id="ctaDownload">⬇ Скачать 3.4.1</a>
       <a class="btn" href="#lab">🧪 Попробовать гибку</a>
     </div>
     <div class="platforms" id="platforms">
@@ -196,30 +196,31 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 <section id="download"><div class="wrap">
   <div class="eyebrow">Скачать</div>
   <h2>Выберите свою платформу</h2>
-  <p class="sub">Официальные сборки 3.4.1. Файлы те же, что проходили тестирование как 3.3.3.3: нативные сборки переименованы без изменений, веб-версия собрана из исходников 3.3.3.3.</p>
+  <p class="sub">Официальные сборки. Файлы те же, что проходили тестирование как 3.3.3.3: нативные сборки переименованы без изменений, веб-версия собрана из исходников 3.3.3.3.</p>
+  <div id="relStatus" style="color:var(--cyan);font:12px var(--mono);margin:-22px 0 26px;min-height:18px">Проверка последнего релиза…</div>
   <div class="cards">
-    <article class="card" data-p="android">
+    <article class="card" data-p="android" data-rel="android">
       <div class="pico"><svg viewBox="0 0 24 24" fill="var(--green)"><path d="M6 9h12v8a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9Zm-1 0a1.5 1.5 0 1 1 3 0v1H5V9Zm11 0a1.5 1.5 0 1 1 3 0v1h-3V9ZM7 3.5 8.6 6h6.8L17 3.5l1 .6-1.2 2.6c1 .6 1.6 1.6 1.6 2.8H5.6c0-1.2.6-2.2 1.6-2.8L6 4.1l1-.6Z"/><circle cx="9.5" cy="13" r="1" fill="#18191c"/><circle cx="14.5" cy="13" r="1" fill="#18191c"/></svg></div>
       <h3>Android</h3><div class="tagline">Телефон или планшет, Android 8.0+. Ставится поверх предыдущих версий, данные сохраняются.</div>
-      <div class="file">GibGib-Sim-3.4.0-universal.apk</div>
-      <div class="hash"><code>e39ba07b43af40fd9f6793a5b53d6c83fc24b8bac028324b7e50c93a06d439a7</code><button class="copy">copy</button></div>
-      <a class="btn primary" href="https://github.com/frikks/gibgib-sim/releases/latest">⬇ Скачать APK</a>
+      <div class="file" data-file>GibGib-Sim-3.4.0-universal.apk</div>
+      <div class="hash"><code data-hash>e39ba07b43af40fd9f6793a5b53d6c83fc24b8bac028324b7e50c93a06d439a7</code><button class="copy">copy</button></div>
+      <a class="btn primary" data-link href="https://github.com/frikks/gibgib-sim/releases/latest">⬇ Скачать APK</a>
       <details><summary>Как установить</summary><ol><li>Скачайте universal.apk.</li><li>Откройте файл на телефоне.</li><li>Разрешите установку из источника и нажмите «Установить».</li></ol><p>`.apks` — для SAI/bundletool.</p></details>
     </article>
-    <article class="card" data-p="windows">
+    <article class="card" data-p="windows" data-rel="windows">
       <div class="pico"><svg viewBox="0 0 24 24" fill="var(--blue)"><path d="M2 4.5 10.5 3.3v8.2H2V4.5Zm9.5-1.4L22 2v9.5h-10.5V3.1ZM2 12.5h8.5v8.2L2 19.5v-7Zm9.5 0H22V22l-10.5-1.5v-8Z"/></svg></div>
       <h3>Windows</h3><div class="tagline">EXE без установки или MSIX-пакет для Windows 11 x64 с тестовым сертификатом.</div>
-      <div class="file">GibGib-Sim-3.4.0-Windows-x64.exe</div>
-      <div class="hash"><code>8339e3b04f2afe5f72521c2c958a2f17c3c7cfed42ac2d99f75798df206467fb</code><button class="copy">copy</button></div>
-      <a class="btn primary" href="https://github.com/frikks/gibgib-sim/releases/latest">⬇ Скачать EXE</a>
+      <div class="file" data-file>GibGib-Sim-3.4.0-Windows-x64.exe</div>
+      <div class="hash"><code data-hash>8339e3b04f2afe5f72521c2c958a2f17c3c7cfed42ac2d99f75798df206467fb</code><button class="copy">copy</button></div>
+      <a class="btn primary" data-link href="https://github.com/frikks/gibgib-sim/releases/latest">⬇ Скачать EXE</a>
       <details><summary>MSIX и сертификат</summary><p>MSIX подписан самоподписанным тестовым сертификатом. Инструкция и отпечаток — в <a href="windows/README.md" style="color:var(--accent2)">windows/README.md</a>.</p></details>
     </article>
-    <article class="card" data-p="web">
+    <article class="card" data-p="web" data-rel="web">
       <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div>
       <h3>Web / браузер</h3><div class="tagline">Полное приложение в одном HTML-файле (~8,6 МБ). Открывается на любой ОС без установки.</div>
-      <div class="file">GibGib-Sim-3.4.0.html</div>
-      <div class="hash"><code>0750594864bd0b5aebb2e2ad1a549842e42ea11ee5335da9f966ac8582f14b9e</code><button class="copy">copy</button></div>
-      <a class="btn primary" href="GibGib-Sim-3.4.0.html">▶ Открыть веб-версию</a>
+      <div class="file" data-file>GibGib-Sim-3.4.0.html</div>
+      <div class="hash"><code data-hash>0750594864bd0b5aebb2e2ad1a549842e42ea11ee5335da9f966ac8582f14b9e</code><button class="copy">copy</button></div>
+      <a class="btn primary" data-link href="GibGib-Sim-3.4.0.html">▶ Открыть веб-версию</a>
       <details><summary>Как пользоваться</summary><p>Скачайте HTML и откройте двойным щелчком. Код, шрифты и графика уже внутри — интернет не нужен.</p></details>
     </article>
   </div>
@@ -285,7 +286,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   <div class="eyebrow">Готовы попробовать?</div>
   <h2>Скачайте и соберите<br>свою первую деталь</h2>
   <p>Бесплатно, без регистрации и без интернета. Официальные файлы — только с этой страницы и страницы релизов.</p>
-  <a class="btn primary" href="https://github.com/frikks/gibgib-sim/releases/latest">⬇ Перейти к релизу 3.4.1</a>
+  <a class="btn primary" id="ctaRelease" href="https://github.com/frikks/gibgib-sim/releases/latest">⬇ Перейти к релизу</a>
 </div></section>
 
 <footer><div class="wrap foot-in">
@@ -365,6 +366,57 @@ document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()
   try{await navigator.clipboard.writeText(v)}catch(e){const t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
   const el=document.getElementById('toast');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1600);
 }));
+
+// ---------- автоматическая синхронизация с последним релизом GitHub ----------
+const API = 'https://api.github.com/repos/frikks/gibgib-sim/releases/latest';
+function pick(assets, test){
+  return assets.find(a => test(a.name.toLowerCase())) || null;
+}
+function applyRelease(data){
+  const v = (data.tag_name || '').replace(/^v/,'');
+  document.getElementById('verBadge').textContent = 'ВЕРСИЯ ' + v;
+  document.getElementById('ctaDownload').textContent = '⬇ Скачать ' + v;
+  document.getElementById('ctaRelease').textContent = '⬇ Перейти к релизу ' + v;
+  const rel = document.getElementById('relStatus');
+  rel.textContent = 'Данные из релиза ' + data.tag_name + ' · обновлено ' + new Date().toLocaleTimeString('ru-RU');
+  const assets = data.assets || [];
+  const map = {
+    android: pick(assets, n => n.endsWith('-universal.apk')),
+    windows: pick(assets, n => n.endsWith('-windows-x64.exe')),
+    web:     pick(assets, n => n.endsWith('.html')),
+  };
+  document.querySelectorAll('.card[data-rel]').forEach(card=>{
+    const a = map[card.dataset.rel]; if(!a) return;
+    card.querySelector('[data-file]').textContent = a.name;
+    card.querySelector('[data-hash]').textContent = (a.digest || '').replace(/^sha256:/,'');
+    const link = card.querySelector('[data-link]');
+    if(link) link.href = a.browser_download_url;
+  });
+  // ссылка «открыть веб-версию» ведёт прямо на свежий HTML-ассет
+  const web = map.web;
+  if(web){
+    const openWeb = document.querySelector('.card[data-rel="web"] [data-link]');
+    if(openWeb) openWeb.href = web.browser_download_url;
+  }
+  document.getElementById('ctaRelease').href = data.html_url || 'https://github.com/frikks/gibgib-sim/releases/latest';
+}
+async function syncRelease(){
+  const status = document.getElementById('relStatus');
+  try{
+    const cached = sessionStorage.getItem('gibgib-release');
+    if(cached){ applyRelease(JSON.parse(cached)); }
+    const r = await fetch(API, {headers:{'Accept':'application/vnd.github+json'}});
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    sessionStorage.setItem('gibgib-release', JSON.stringify(data));
+    applyRelease(data);
+    status.style.color = 'var(--green)';
+  }catch(e){
+    status.textContent = 'Не удалось получить данные релиза — показаны сохранённые значения (' + e.message + ')';
+    status.style.color = 'var(--muted)';
+  }
+}
+syncRelease();
 </script>
 </body>
 </html>
