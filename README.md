@@ -2,7 +2,7 @@
 
 **Press Bending Simulating** — офлайн-симулятор листогибочного пресса для **Android** и **Windows**. Соберите деталь, подберите пуансон и матрицу, посмотрите каждый гиб в 2D и 3D, проверьте столкновения, рассчитайте развёртку и получите чертёж A4. Без интернета, регистрации и рекламы.
 
-**Текущая версия: 3.4.2** · Android 8.0+ · Windows 10/11 x64 · русский и английский интерфейс
+**Текущая версия: 3.4.3** · Android 8.0+ · Windows 10/11 x64 · русский и английский интерфейс
 
 ### [⬇️ Скачать 3.4.0](https://github.com/frikks/gibgib-sim/releases/latest) · [🌐 Сайт проекта](https://frikks.github.io/gibgib-sim/)
 
@@ -10,7 +10,7 @@
 
 | Платформа | Готовый файл | Подробнее |
 |---|---|---|
-| **Android** | `GibGib-Sim-3.4.2-universal.apk` (или `.apks` для SAI/bundletool) | [Установка](#установка-android) |
+| **Android** | `GibGib-Sim-3.4.3-universal.apk` (или `.apks` для SAI/bundletool) | [Установка](#установка-android) |
 | **Windows** | `GibGib-Sim-3.4.0-Windows-x64.exe` (или `.msix` + сертификат) | [windows/README.md](windows/README.md) |
 | **Любая ОС (браузер)** | `GibGib-Sim-3.4.0.html` — полноценное приложение в одном файле, ~8,6 МБ | [Веб-версия](#веб-версия-340) |
 
@@ -20,7 +20,7 @@
 
 Файл `GibGib-Sim-3.4.0.html` из релиза открывается двойным щелчком в любом браузере на Windows, macOS, Linux, Android и iOS — без установки и внешних файлов. Это **полная веб-версия**, собранная из исходного кода 3.3.3.3 в WebAssembly (Rust + eframe/egui), а не упрощённая страница. Работают вкладки «Проекты / Деталь / Гибка / Инструмент / Расчёт / Документы», 2D-сечение и 3D-вид с анимацией гибки, недогибы и пружинение, материалы, карта наладки, библиотека из 1000 инструментов, автоподбор, развёртка, K-фактор, чертёж A4, экспорт PDF/PNG/TXT/CSV/RTF, русский и английский языки.
 
-SHA-256: `ab376799b5cc1cbe646569a1f9a8be3d36821bb42ccdd0720ee0d01feab09c71`.
+SHA-256: `61145d990755ca5a939ffff1eb3c79d010c593a87fd000d57c43514797055544`.
 
 Как и десктопная версия, она не управляет станком.
 
@@ -117,7 +117,7 @@ SHA-256: `ab376799b5cc1cbe646569a1f9a8be3d36821bb42ccdd0720ee0d01feab09c71`.
 ## Установка (Android)
 
 1. Откройте [релиз v3.4.0](https://github.com/frikks/gibgib-sim/releases/tag/v3.4.0).
-2. Скачайте `GibGib-Sim-3.4.2-universal.apk` и откройте его на телефоне.
+2. Скачайте `GibGib-Sim-3.4.3-universal.apk` и откройте его на телефоне.
 3. Разрешите установку из этого источника, если Android спросит, и нажмите «Установить».
 
 Новые версии ставятся поверх старых, данные сохраняются. Файл `.apks` — тот же APK, разделённый по типам процессоров; ставится через [SAI](https://github.com/Aefyr/SAI) или `adb install-multiple`. Если не уверены — берите `universal.apk`.
@@ -126,16 +126,16 @@ SHA-256: `ab376799b5cc1cbe646569a1f9a8be3d36821bb42ccdd0720ee0d01feab09c71`.
 
 ## Контрольные суммы SHA-256
 
-APK/APKS 3.4.2 пересобраны с исправлением нижних кнопок Android и подписаны тем же ключом. EXE/MSIX/CER — неизменённые бинарники 3.3.3.3. Веб-версия пересобрана из того же исходника и имеет собственный SHA-256.
+APK/APKS 3.4.3 собраны с исправлением нижних кнопок Android и устойчивым импортом DXF, подписаны тем же ключом. EXE/MSIX/CER — неизменённые бинарники 3.3.3.3. Веб-версия пересобрана из того же исходника и имеет собственный SHA-256.
 
 | Файл | SHA-256 |
 |---|---|
-| `GibGib-Sim-3.4.2-universal.apk` | `1bda6681ad575b1da398ddb1a6fa432f0918f75395f44e5e4b0a585dc52380a9` |
-| `GibGib-Sim-3.4.2.apks` | `af410bf1cc3e3855f7ec7639f23027bd27cf3b45a8662ed287db1660798527f2` |
+| `GibGib-Sim-3.4.3-universal.apk` | `97f79a99ce4ea48972e464da40e56e2f52d472f9f095a0eef5d818afae9de7bd` |
+| `GibGib-Sim-3.4.3.apks` | `b7cb237f5979ef6fb37160849a25bfa1f7a14878c7f3e34b28da2bb31ba24334` |
 | `GibGib-Sim-3.4.0-Windows-x64.exe` | `8339e3b04f2afe5f72521c2c958a2f17c3c7cfed42ac2d99f75798df206467fb` |
 | `GibGib-Sim-3.4.0-Windows11-x64-TEST.msix` | `876128c7a61b544cb6680fe34fd4617051f5c697c8eecc0b49c54b88e286e1e3` |
 | `GibGib-Sim-Windows-TEST-2026.cer` | `404bc3395192697c78c3c9d32d41aef8920c52a4f01ca898eec7e5812d7364f4` |
-| `GibGib-Sim-3.4.0.html` | `ab376799b5cc1cbe646569a1f9a8be3d36821bb42ccdd0720ee0d01feab09c71` |
+| `GibGib-Sim-3.4.0.html` | `61145d990755ca5a939ffff1eb3c79d010c593a87fd000d57c43514797055544` |
 
 Проверить: `Get-FileHash <файл> -Algorithm SHA256` (PowerShell) или `sha256sum <файл>` (Linux/macOS).
 
@@ -167,7 +167,7 @@ APK/APKS 3.4.2 пересобраны с исправлением нижних �
 - Bending/hemming animation, collision checks, automatic bend sequence search, machine setup.
 - Projects, tooling map, springback, bending force, custom tooling and all under-bend angles were added in the 3.3.3.x line.
 - **3.4.0** promotes the tested 3.3.3.3 build to a stable release with a single version number for all platforms.
-- **Web edition:** `GibGib-Sim-3.4.0.html` is the full application compiled from the 3.3.3.3 source to WebAssembly (Rust + eframe/egui). Open the file in any browser on Windows, macOS, Linux, Android or iOS — no installation. SHA-256: `ab376799b5cc1cbe646569a1f9a8be3d36821bb42ccdd0720ee0d01feab09c71`.
+- **Web edition:** `GibGib-Sim-3.4.0.html` is the full application compiled from the 3.3.3.3 source to WebAssembly (Rust + eframe/egui). Open the file in any browser on Windows, macOS, Linux, Android or iOS — no installation. SHA-256: `61145d990755ca5a939ffff1eb3c79d010c593a87fd000d57c43514797055544`.
 - **Windows:** run the unsigned `GibGib-Sim-3.4.0-Windows-x64.exe` without installation, or install the MSIX package with the test certificate (see [windows/README.md](windows/README.md) for the PowerShell commands and certificate thumbprint).
 
 Native files are the unchanged 3.3.3.3 binaries renamed for the stable release; the web edition was rebuilt from source and has its own checksum. The source code is not published; only the finished HTML file is distributed.
