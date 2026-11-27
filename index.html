@@ -253,13 +253,14 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
       <text x="410" y="332" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace" text-anchor="end">МАТРИЦА · V</text>
       <!-- пуансон: клин с держателем, опускается при гибке -->
       <g id="punch" stroke="#0d0f12" stroke-width="4" stroke-linejoin="round">
-        <!-- Гусак в мультяшном стиле: толстый контур, плоская заливка, преувеличенное горло -->
-        <rect x="222" y="164" width="76" height="18" rx="7" fill="#9aa4ae"/>
-        <path d="M248 182 H272 V202 L300 224 L280 286 L264 298 H256 C240 278 232 258 242 236 C254 218 260 210 248 202 Z"
+        <!-- Гусак по чертежу: узкий хвостовик 13, уступ 8.4/3 слева,
+             корпус с вогнутым горлом и длинной левой кромкой к носику α/R -->
+        <rect x="244" y="160" width="32" height="9" rx="3" fill="#9aa4ae"/>
+        <path d="M251 169 H269 V205 H290 V218 C286 250 246 250 262 292 L264 296 H256 L214 240 L226 205 H251 Z"
               fill="#aeb7c0"/>
-        <path d="M256 298 Q260 303 264 298" fill="none" stroke-width="3"/>
-        <ellipse cx="256" cy="214" rx="5" ry="11" fill="#eef4f9" stroke="none" transform="rotate(22 256 214)"/>
-        <text x="304" y="206" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace" stroke="none">ПУАНСОН · ГУСАК 88°</text>
+        <path d="M256 296 Q260 301 264 296" fill="none" stroke-width="3"/>
+        <ellipse cx="236" cy="228" rx="4" ry="10" fill="#eef4f9" stroke="none" transform="rotate(34 236 228)"/>
+        <text x="300" y="190" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace" stroke="none">ПУАНСОН · ГУСАК 88°</text>
       </g>
       <!-- лист в V-канавке -->
       <polyline id="sheetOutline" points="178,240 238,300 260,322 282,300 342,240" fill="none" stroke="#0d0f12" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
