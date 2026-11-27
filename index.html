@@ -232,14 +232,36 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   <p class="sub">Двигайте ползунки — схема и расчёт развёртки меняются в реальном времени. Упрощённая модель: s = 2 мм, R = 2,56 мм, две полки по 100 мм.</p>
   <div class="lab">
     <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9d4d"/><stop offset="1" stop-color="#ff5a00"/></linearGradient></defs>
+      <defs>
+        <linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9d4d"/><stop offset="1" stop-color="#ff5a00"/></linearGradient>
+        <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8b949e"/><stop offset="1" stop-color="#3b4249"/></linearGradient>
+        <linearGradient id="punchSteel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#aeb7c0"/><stop offset="1" stop-color="#59626b"/></linearGradient>
+      </defs>
       <g stroke="#39414b" stroke-width="1">
         <path d="M0 60H520M0 120H520M0 180H520M0 240H520M0 300H520"/>
         <path d="M60 0V360M120 0V360M180 0V360M240 0V360M300 0V360M360 0V360M420 0V360M480 0V360"/>
       </g>
-      <path d="M150 300 L370 300 L340 340 L180 340 Z" fill="#3c444d" stroke="#68737f" stroke-width="2"/>
+      <!-- матрица: стальной корпус с V-канавкой -->
+      <path d="M110 300 H410 V352 H110 Z" fill="url(#steel)" stroke="#9aa4ae" stroke-width="2"/>
+      <path d="M238 300 L260 346 L282 300 Z" fill="#15171b" stroke="#ff9d4d" stroke-width="1.5"/>
+      <path d="M238 300 L260 346" stroke="#d6dde4" stroke-width="3"/>
+      <path d="M282 300 L260 346" stroke="#9aa4ae" stroke-width="3"/>
+      <path d="M110 300 H238 M282 300 H410" stroke="#e0e6ec" stroke-width="3"/>
+      <g stroke="#58616a" stroke-width="1" opacity=".7">
+        <path d="M116 326 H236 M284 326 H404 M116 340 H240 M280 340 H404"/>
+      </g>
+      <text x="410" y="332" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace" text-anchor="end">МАТРИЦА · V</text>
+      <!-- пуансон: клин с держателем, опускается при гибке -->
+      <g id="punch">
+        <rect x="228" y="68" width="64" height="13" rx="3" fill="#9aa4ae"/>
+        <path d="M244 81 H276 L268 172 H252 Z" fill="url(#punchSteel)" stroke="#c8d0d8" stroke-width="2"/>
+        <path d="M252 172 H268 L265 183 H255 Z" fill="#e0e6ec"/>
+        <text x="286" y="120" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace">ПУАНСОН</text>
+      </g>
+      <!-- лист в V-канавке -->
       <polyline id="sheet" points="200,110 260,250 320,110" fill="none" stroke="url(#sh)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
       <polyline id="sheetInner" points="200,110 260,250 320,110" fill="none" stroke="#ffd0a3" stroke-width="2" stroke-linejoin="round" opacity=".8"/>
+      <path id="radiusArc" d="" fill="none" stroke="#35d6e8" stroke-width="2" opacity=".9"/>
       <line id="bendline" x1="260" y1="250" x2="260" y2="80" stroke="#35d6e8" stroke-width="2" stroke-dasharray="6 6"/>
       <text x="260" y="62" fill="#35d6e8" font-size="15" font-family="Consolas,monospace" text-anchor="middle" id="angLabel">90°</text>
       <text x="24" y="34" fill="#ff9d4d" font-size="13" font-family="Consolas,monospace">LIVE GEOMETRY</text>
@@ -351,6 +373,9 @@ function upd(){
   const lx=cx-L*Math.sin(a), ly=cy-L*Math.cos(a), rx=cx+L*Math.sin(a);
   const pts=[[lx.toFixed(1),ly.toFixed(1)],[cx,cy],[rx.toFixed(1),ly.toFixed(1)]].map(p=>p.join(',')).join(' ');
   sheet.setAttribute('points',pts); inner.setAttribute('points',pts);
+  const t=22, px=cx-t*Math.sin(a), py=cy-t*Math.cos(a), qx=cx+t*Math.sin(a);
+  document.getElementById('radiusArc').setAttribute('d',`M${px.toFixed(1)} ${py.toFixed(1)} Q ${cx} ${cy} ${qx.toFixed(1)} ${py.toFixed(1)}`);
+  document.getElementById('punch').setAttribute('transform',`translate(0,${((170-A)/140*58).toFixed(1)})`);
   document.getElementById('angVal').textContent=A+'°';
   document.getElementById('angLabel').textContent=A+'°';
   document.getElementById('kVal').textContent=K.toFixed(2);
