@@ -253,12 +253,12 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
       <text x="410" y="332" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace" text-anchor="end">МАТРИЦА · V</text>
       <!-- пуансон: клин с держателем, опускается при гибке -->
       <g id="punch">
-        <!-- Стандартный пуансон 88° с плоским носиком и скруглением R -->
+        <!-- Гусак (gooseneck) — самый ходовой пуансон: выемка для уже отогнутых полок -->
         <rect x="226" y="168" width="68" height="12" rx="3" fill="#9aa4ae"/>
-        <rect x="230" y="180" width="60" height="90" fill="url(#punchSteel)" stroke="#c8d0d8" stroke-width="2"/>
-        <path d="M230 270 L257 297 H263 L290 270 Z" fill="url(#punchSteel)" stroke="#c8d0d8" stroke-width="2"/>
-        <path d="M257 297 Q260 301 263 297" fill="none" stroke="#e0e6ec" stroke-width="2"/>
-        <text x="300" y="205" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace">ПУАНСОН 88°</text>
+        <path d="M230 180 H290 V238 C290 258 276 276 263 296 H257 C244 276 230 258 230 238 Z"
+              fill="url(#punchSteel)" stroke="#c8d0d8" stroke-width="2"/>
+        <path d="M257 296 Q260 300 263 296" fill="none" stroke="#e0e6ec" stroke-width="2"/>
+        <text x="300" y="205" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace">ПУАНСОН · ГУСАК 88°</text>
       </g>
       <!-- лист в V-канавке -->
       <polyline id="sheet" points="178,240 238,300 260,322 282,300 342,240" fill="none" stroke="url(#sh)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
