@@ -242,25 +242,27 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
         <path d="M60 0V360M120 0V360M180 0V360M240 0V360M300 0V360M360 0V360M420 0V360M480 0V360"/>
       </g>
       <!-- матрица: стальной корпус с V-канавкой -->
-      <path d="M110 300 H410 V352 H110 Z" fill="url(#steel)" stroke="#9aa4ae" stroke-width="2"/>
-      <path d="M238 300 L260 346 L282 300 Z" fill="#15171b" stroke="#ff9d4d" stroke-width="1.5"/>
-      <path d="M238 300 L260 346" stroke="#d6dde4" stroke-width="3"/>
-      <path d="M282 300 L260 346" stroke="#9aa4ae" stroke-width="3"/>
+      <path d="M110 300 H410 V352 H110 Z" fill="url(#steel)" stroke="#0d0f12" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M238 300 L260 346 L282 300 Z" fill="#15171b" stroke="#0d0f12" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M238 300 L260 346" stroke="#e6edf4" stroke-width="4"/>
+      <path d="M282 300 L260 346" stroke="#9aa4ae" stroke-width="4"/>
       <path d="M110 300 H238 M282 300 H410" stroke="#e0e6ec" stroke-width="3"/>
       <g stroke="#58616a" stroke-width="1" opacity=".7">
         <path d="M116 326 H236 M284 326 H404 M116 340 H240 M280 340 H404"/>
       </g>
       <text x="410" y="332" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace" text-anchor="end">МАТРИЦА · V</text>
       <!-- пуансон: клин с держателем, опускается при гибке -->
-      <g id="punch">
-        <!-- Гусак (gooseneck) — самый ходовой пуансон: выемка для уже отогнутых полок -->
-        <rect x="226" y="168" width="68" height="12" rx="3" fill="#9aa4ae"/>
-        <path d="M250 170 H270 V200 L296 222 L276 282 L264 296 H258 C244 276 238 258 246 238 C256 220 262 210 250 200 Z"
-              fill="url(#punchSteel)" stroke="#c8d0d8" stroke-width="2"/>
-        <path d="M257 296 Q260 300 263 296" fill="none" stroke="#e0e6ec" stroke-width="2"/>
-        <text x="300" y="205" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace">ПУАНСОН · ГУСАК 88°</text>
+      <g id="punch" stroke="#0d0f12" stroke-width="4" stroke-linejoin="round">
+        <!-- Гусак в мультяшном стиле: толстый контур, плоская заливка, преувеличенное горло -->
+        <rect x="222" y="164" width="76" height="18" rx="7" fill="#9aa4ae"/>
+        <path d="M248 182 H272 V202 L300 224 L280 286 L264 298 H256 C240 278 232 258 242 236 C254 218 260 210 248 202 Z"
+              fill="#aeb7c0"/>
+        <path d="M256 298 Q260 303 264 298" fill="none" stroke-width="3"/>
+        <ellipse cx="256" cy="214" rx="5" ry="11" fill="#eef4f9" stroke="none" transform="rotate(22 256 214)"/>
+        <text x="304" y="206" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace" stroke="none">ПУАНСОН · ГУСАК 88°</text>
       </g>
       <!-- лист в V-канавке -->
+      <polyline id="sheetOutline" points="178,240 238,300 260,322 282,300 342,240" fill="none" stroke="#0d0f12" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
       <polyline id="sheet" points="178,240 238,300 260,322 282,300 342,240" fill="none" stroke="url(#sh)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
       <polyline id="sheetInner" points="178,240 238,300 260,322 282,300 342,240" fill="none" stroke="#ffd0a3" stroke-width="2" stroke-linejoin="round" opacity=".8"/>
       <path id="radiusArc" d="" fill="none" stroke="#35d6e8" stroke-width="2" opacity=".9"/>
@@ -379,6 +381,7 @@ function upd(){
   const rx=282+arm*Math.cos(th), ry=ly;
   const pts=[[lx,ly],[238,300],[260,apexY],[282,300],[rx,ry]].map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
   sheet.setAttribute('points',pts); inner.setAttribute('points',pts);
+  document.getElementById('sheetOutline').setAttribute('points',pts);
   const t=14, px=260-t*Math.cos(th), py=apexY-t*Math.sin(th), qx=260+t*Math.cos(th);
   document.getElementById('radiusArc').setAttribute('d',`M${px.toFixed(1)} ${py.toFixed(1)} Q 260 ${apexY.toFixed(1)} ${qx.toFixed(1)} ${py.toFixed(1)}`);
   document.getElementById('bendline').setAttribute('y1',apexY.toFixed(1));
