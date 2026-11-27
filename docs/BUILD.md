@@ -33,6 +33,10 @@ python3 build_wasm_html.py   # встраивает .js и base64 .wasm в од�
 
 Скрипт `build_wasm_html.py` живёт в рабочей среде сборки и в публичный репозиторий не входит: он подставляет сгенерированный JS и base64 WASM в HTML-шаблон с canvas и экраном загрузки.
 
+## Windows-сборка
+
+EXE и MSIX пересобраны 27.11.2026 из тех же исходников. Нужны Rust-цель `x86_64-pc-windows-gnu`, MinGW (`gcc`, `windres`) и Windows SDK (`makeappx`, `signtool`). Скрипты сборки лежат в `bigdata/build-tools/scripts/`: `build_windows.ps1` и `build_msix.ps1`. MSIX подписывается новым тестовым самоподписанным сертификатом; открытая часть — `GibGib-Sim-Windows-TEST-2026.cer`, отпечаток SHA-1 `9DB5AD8D3DE8E300B75D29A00F7812E371A41EA4`.
+
 ## Контрольная сумма
 
 Ожидаемый SHA-256 готового файла:
