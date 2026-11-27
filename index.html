@@ -253,16 +253,16 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
       <text x="410" y="332" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace" text-anchor="end">МАТРИЦА · V</text>
       <!-- пуансон: клин с держателем, опускается при гибке -->
       <g id="punch">
-        <rect x="228" y="68" width="64" height="13" rx="3" fill="#9aa4ae"/>
-        <path d="M244 81 H276 L268 172 H252 Z" fill="url(#punchSteel)" stroke="#c8d0d8" stroke-width="2"/>
-        <path d="M252 172 H268 L265 183 H255 Z" fill="#e0e6ec"/>
-        <text x="286" y="120" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace">ПУАНСОН</text>
+        <rect x="228" y="182" width="64" height="13" rx="3" fill="#9aa4ae"/>
+        <path d="M244 195 H276 L268 286 H252 Z" fill="url(#punchSteel)" stroke="#c8d0d8" stroke-width="2"/>
+        <path d="M252 286 H268 L265 297 H255 Z" fill="#e0e6ec"/>
+        <text x="286" y="172" fill="#9aa4ae" font-size="12" font-family="Consolas,monospace">ПУАНСОН</text>
       </g>
       <!-- лист в V-канавке -->
-      <polyline id="sheet" points="200,110 260,250 320,110" fill="none" stroke="url(#sh)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
-      <polyline id="sheetInner" points="200,110 260,250 320,110" fill="none" stroke="#ffd0a3" stroke-width="2" stroke-linejoin="round" opacity=".8"/>
+      <polyline id="sheet" points="177,190 260,330 343,190" fill="none" stroke="url(#sh)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+      <polyline id="sheetInner" points="177,190 260,330 343,190" fill="none" stroke="#ffd0a3" stroke-width="2" stroke-linejoin="round" opacity=".8"/>
       <path id="radiusArc" d="" fill="none" stroke="#35d6e8" stroke-width="2" opacity=".9"/>
-      <line id="bendline" x1="260" y1="250" x2="260" y2="80" stroke="#35d6e8" stroke-width="2" stroke-dasharray="6 6"/>
+      <line id="bendline" x1="260" y1="330" x2="260" y2="80" stroke="#35d6e8" stroke-width="2" stroke-dasharray="6 6"/>
       <text x="260" y="62" fill="#35d6e8" font-size="15" font-family="Consolas,monospace" text-anchor="middle" id="angLabel">90°</text>
       <text x="24" y="34" fill="#ff9d4d" font-size="13" font-family="Consolas,monospace">LIVE GEOMETRY</text>
     </svg>
@@ -368,14 +368,14 @@ document.querySelectorAll('.pbtn').forEach(b=>b.onclick=()=>{
 // interactive bend geometry
 const ang=document.getElementById('ang'), kf=document.getElementById('k'), sheet=document.getElementById('sheet'), inner=document.getElementById('sheetInner');
 function upd(){
-  const A=+ang.value, K=+kf.value/100, R=2.56, s=2, L=118, cx=260, cy=250;
+  const A=+ang.value, K=+kf.value/100, R=2.56, s=2, L=118, cx=260, cy=330;
   const a=(A/2)*Math.PI/180;
   const lx=cx-L*Math.sin(a), ly=cy-L*Math.cos(a), rx=cx+L*Math.sin(a);
   const pts=[[lx.toFixed(1),ly.toFixed(1)],[cx,cy],[rx.toFixed(1),ly.toFixed(1)]].map(p=>p.join(',')).join(' ');
   sheet.setAttribute('points',pts); inner.setAttribute('points',pts);
   const t=22, px=cx-t*Math.sin(a), py=cy-t*Math.cos(a), qx=cx+t*Math.sin(a);
   document.getElementById('radiusArc').setAttribute('d',`M${px.toFixed(1)} ${py.toFixed(1)} Q ${cx} ${cy} ${qx.toFixed(1)} ${py.toFixed(1)}`);
-  document.getElementById('punch').setAttribute('transform',`translate(0,${((170-A)/140*58).toFixed(1)})`);
+  document.getElementById('punch').setAttribute('transform',`translate(0,${(30+(170-A)/140*8).toFixed(1)})`);
   document.getElementById('angVal').textContent=A+'°';
   document.getElementById('angLabel').textContent=A+'°';
   document.getElementById('kVal').textContent=K.toFixed(2);
