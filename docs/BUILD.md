@@ -1,13 +1,13 @@
-# Сборка веб-версии 3.4.0
+# Сборка веб-версии 3.4.3
 
-`GibGib-Sim-3.4.0.html` — сгенерированный файл. **Не редактируйте его вручную.** Ниже описано, как он получается.
+`GibGib-Sim-3.4.3.html` — сгенерированный файл. **Не редактируйте его вручную.** Ниже описано, как он получается.
 
 ## Исходники
 
 | Что | Значение |
 |---|---|
 | Архив исходников | `GibGib-Sim-3.3.3.3-source-NO-KEY.zip` (приватный репозиторий `frikks/gibgib-sim-source`, локальная резервная копия) |
-| Версия в Cargo.toml / `lib.rs` | 3.4.0 (было 3.3.3 / 3.3.3.3) |
+| Версия в Cargo.toml / `lib.rs` | 3.4.3 (было 3.3.3 / 3.3.3.3) |
 | Инструмент | Rust 1.99.1, цель `wasm32-unknown-unknown` |
 | wasm-bindgen CLI | 0.2.130 |
 
@@ -20,7 +20,7 @@
 3. `src/lib.rs`: алиасы `Instant`/`SystemTime`/`UNIX_EPOCH` из `web-time`, вспомогательная функция `instant_ago()` (web-time-INSTANT начинается с загрузки страницы), синхронная замена `std::thread` для wasm.
 4. Вызовы `std::thread::spawn` / `thread::scope` заменены на синхронный шим (браузер однопоточен).
 5. `save_bytes` / `print_bytes`: на wasm файлы отдаются через Blob + `URL.createObjectURL` вместо `std::fs`.
-6. `VERSION` выставлен в `3.4.0`.
+6. `VERSION` выставлен в `3.4.3` (Android versionCode 23).
 
 ## Команды
 
@@ -44,6 +44,6 @@ python3 build_wasm_html.py   # встраивает .js и base64 .wasm в од�
 Проверка:
 
 ```sh
-sha256sum GibGib-Sim-3.4.0.html
-git show origin/main:GibGib-Sim-3.4.0.html | sha256sum
+sha256sum GibGib-Sim-3.4.3.html
+git show origin/main:GibGib-Sim-3.4.3.html | sha256sum
 ```

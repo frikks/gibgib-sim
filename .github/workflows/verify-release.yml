@@ -14,7 +14,7 @@ jobs:
       - name: Verify web edition SHA-256
         run: |
           expected="61145d990755ca5a939ffff1eb3c79d010c593a87fd000d57c43514797055544"
-          actual="$(sha256sum GibGib-Sim-3.4.0.html | cut -d' ' -f1)"
+          actual="$(sha256sum GibGib-Sim-3.4.3.html | cut -d' ' -f1)"
           echo "actual=$actual"
           test "$actual" = "$expected"
 

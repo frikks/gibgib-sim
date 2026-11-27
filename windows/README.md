@@ -2,17 +2,17 @@
 
 Windows-версия офлайн-симулятора листогибочного пресса. С 3.4.0 документация Android и Windows объединена в одном репозитории; этот файл описывает только особенности Windows-сборки.
 
-[⬇️ Скачать Windows-версию 3.4.0](https://github.com/frikks/gibgib-sim/releases/tag/v3.4.0) · [Общий README и возможности](../README.md) · [История версий](../CHANGELOG.md)
+[⬇️ Скачать Windows-версию 3.4.3](https://github.com/frikks/gibgib-sim/releases/latest) · [Общий README и возможности](../README.md) · [История версий](../CHANGELOG.md)
 
 ## Файлы и совместимость
 
 | Файл | Назначение | SHA-256 |
 |---|---|---|
-| `GibGib-Sim-3.4.0-Windows-x64.exe` | Запуск без установки, 64-битные Windows 10 и 11. EXE не подписан. | `8339e3b04f2afe5f72521c2c958a2f17c3c7cfed42ac2d99f75798df206467fb` |
-| `GibGib-Sim-3.4.0-Windows11-x64-TEST.msix` | Тестовый установочный пакет для Windows 11 x64; нужен сертификат ниже. | `876128c7a61b544cb6680fe34fd4617051f5c697c8eecc0b49c54b88e286e1e3` |
+| `GibGib-Sim-3.4.3-Windows-x64.exe` | Запуск без установки, 64-битные Windows 10 и 11. EXE не подписан. | `8339e3b04f2afe5f72521c2c958a2f17c3c7cfed42ac2d99f75798df206467fb` |
+| `GibGib-Sim-3.4.3-Windows11-x64-TEST.msix` | Тестовый установочный пакет для Windows 11 x64; нужен сертификат ниже. | `876128c7a61b544cb6680fe34fd4617051f5c697c8eecc0b49c54b88e286e1e3` |
 | `GibGib-Sim-Windows-TEST-2026.cer` | Открытый тестовый сертификат для MSIX. | `404bc3395192697c78c3c9d32d41aef8920c52a4f01ca898eec7e5812d7364f4` |
 
-Предыдущие сборки проверены пользователем на Windows 11 Pro 26H1, сборка 28000.2704. Сборка 3.4.0 (бывшая тестовая 3.3.3.3) прошла 71 автотест и визуальную проверку в окне 1280×900; запуск на реальной Windows подтверждён пользователем для предыдущих версий. Windows 7/8, 32-битная и ARM Windows этой сборкой не поддерживаются.
+Предыдущие сборки проверены пользователем на Windows 11 Pro 26H1, сборка 28000.2704. Сборка 3.4.3 — тот же бинарник 3.3.3.3, переименованный для стабильного релиза; он прошёл 71 автотест и визуальную проверку в окне 1280×900; запуск на реальной Windows подтверждён пользователем для предыдущих версий. Windows 7/8, 32-битная и ARM Windows этой сборкой не поддерживаются.
 
 **Проще всего:** скачайте EXE и запустите его. Если Windows покажет «Windows защитила компьютер» → «Подробнее» → «Выполнить в любом случае». Установка и сертификат в этом случае не нужны.
 
@@ -25,7 +25,7 @@ Windows-версия офлайн-симулятора листогибочно�
 
 ```powershell
 Import-Certificate -CertStoreLocation "Cert:\LocalMachine\TrustedPeople" -FilePath ".\GibGib-Sim-Windows-TEST-2026.cer"
-Add-AppxPackage ".\GibGib-Sim-3.4.0-Windows11-x64-TEST.msix"
+Add-AppxPackage ".\GibGib-Sim-3.4.3-Windows11-x64-TEST.msix"
 ```
 
 Пакет подписан тем же тестовым сертификатом, что и 3.2.1–3.3.3, поэтому должен ставиться поверх них (обновление поверх 3.2.0 с другим сертификатом не проверялось). При проблемах сначала сохраните данные и прочитайте сообщение Windows; не удаляйте старую версию без резервной копии. После тестирования доверие можно отозвать, удалив сертификат с отпечатком SHA-1 `AFAE91781197A5135DBE4F51FD05E02ED8C93044` из «Доверенные пользователи» локального компьютера.
@@ -41,25 +41,13 @@ Add-AppxPackage ".\GibGib-Sim-3.4.0-Windows11-x64-TEST.msix"
 
 ## Экраны
 
-*Настольная проверка в Linux; внешний вид Windows может отличаться.*
+*Снимок десктопной сборки 3.4.3 на Windows 11.*
 
 <p align="center">
-  <img src="screenshots/simulator-windows-3.3.3.png" width="45%" alt="Симулятор">
-  <img src="screenshots/detail-windows-3.3.3.png" width="45%" alt="Деталь">
+  <img src="../screenshots/windows-3.4.3-desktop.png" width="920" alt="Windows: симулятор Гибки Листа 3.4.3">
 </p>
 
-<p align="center">
-  <img src="screenshots/flat-windows-3.3.3.png" width="45%" alt="Развёртка и печать">
-  <img src="screenshots/kfactor-windows-3.3.3.png" width="45%" alt="K-фактор">
-</p>
-
-<p align="center">
-  <img src="screenshots/tools-windows-3.3.3.png" width="90%" alt="Список инструмента">
-</p>
-
-<p align="center">
-  <img src="screenshots/collage-windows-3.3.3.png" width="90%" alt="Обзор Windows-версии">
-</p>
+Остальные экраны (2D/3D, деталь, инструмент, развёртка, документы) — в [общем README](../README.md#скриншоты).
 
 ## Важно
 

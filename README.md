@@ -13,7 +13,7 @@
 
 [Возможности](#возможности) · [Как это работает](#как-это-работает) · [Скриншоты](#скриншоты) · [Скачать](#скачать) · [English](#english)
 
-<img src="screenshots/collage-3.3.3-android.png" alt="Симулятор Гибки Листа" width="920">
+<img src="screenshots/web-3.4.3-bending-3d.png" alt="Симулятор Гибки Листа — 3D-гибка" width="920">
 
 </div>
 
@@ -80,23 +80,23 @@
 
 ## Скриншоты
 
-| Симулятор | Деталь |
+| 3D-гибка | 2D-сечение |
 | :---: | :---: |
-| ![Симулятор](screenshots/simulator-3.3.3.png) | ![Деталь](screenshots/part-3.3.3.png) |
+| ![3D-гибка](screenshots/web-3.4.3-bending-3d.png) | ![2D-сечение](screenshots/web-3.4.3-bending-2d.png) |
 
-| Инструмент | Развёртка |
+| Деталь | Инструмент |
 | :---: | :---: |
-| ![Инструмент](screenshots/tools-3.3.3.png) | ![Развёртка](screenshots/flat-3.3.3.png) |
+| ![Деталь](screenshots/web-3.4.3-part.png) | ![Инструмент](screenshots/web-3.4.3-tooling.png) |
 
-| K-фактор | Чертёж A4 |
+| Расчёт | Документы |
 | :---: | :---: |
-| ![K-фактор](screenshots/kfactor-3.3.3.png) | ![Чертёж A4](screenshots/drawing-a4.png) |
+| ![Расчёт](screenshots/web-3.4.3-calculation.png) | ![Документы](screenshots/web-3.4.3-documents.png) |
 
-| Веб-версия: 3D-гибка | Windows: десктоп |
+| Проекты | Windows: десктоп |
 | :---: | :---: |
-| ![Веб](screenshots/web-3.4.0-bending-3d.png) | ![Windows](screenshots/windows-3.4.0-desktop.png) |
+| ![Проекты](screenshots/web-3.4.3-projects.png) | ![Windows](screenshots/windows-3.4.3-desktop.png) |
 
-*Снимки `*-3.3.3*` демонстрируют интерфейс 3.3.3; в 3.4.x добавлены вкладки «Проекты · Деталь · Гибка · Инструмент · Расчёт · Документы».*
+Скриншоты сняты с веб- и Windows-сборок 3.4.3.
 
 ---
 
@@ -105,8 +105,8 @@
 | Платформа | Файл | Как запустить |
 | :--- | :--- | :--- |
 | **Android 8+** | [universal.apk](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-3.4.3-universal.apk) · [.apks](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-3.4.3.apks) | Открыть APK на телефоне. `.apks` — через [SAI](https://github.com/Aefyr/SAI) или `adb install-multiple`. |
-| **Windows 10/11 x64** | [EXE](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-3.4.0-Windows-x64.exe) · [MSIX](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-3.4.0-Windows11-x64-TEST.msix) · [CER](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-Windows-TEST-2026.cer) | EXE запускается без установки; для MSIX нужен тестовый сертификат — инструкция в [windows/README.md](windows/README.md). |
-| **Браузер** | [HTML](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-3.4.0.html) | Скачать файл и открыть двойным щелчком. Работает офлайн на Windows, macOS, Linux, Android и iOS. |
+| **Windows 10/11 x64** | [EXE](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-3.4.3-Windows-x64.exe) · [MSIX](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-3.4.3-Windows11-x64-TEST.msix) · [CER](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-Windows-TEST-2026.cer) | EXE запускается без установки; для MSIX нужен тестовый сертификат — инструкция в [windows/README.md](windows/README.md). |
+| **Браузер** | [HTML](https://github.com/frikks/gibgib-sim/releases/latest/download/GibGib-Sim-3.4.3.html) | Скачать файл и открыть двойным щелчком. Работает офлайн на Windows, macOS, Linux, Android и iOS. |
 
 Контрольные суммы SHA-256: **[SHA256SUMS.txt](https://github.com/frikks/gibgib-sim/releases/latest/download/SHA256SUMS.txt)** · [все релизы](https://github.com/frikks/gibgib-sim/releases) · [сайт проекта](https://frikks.github.io/gibgib-sim/).
 
