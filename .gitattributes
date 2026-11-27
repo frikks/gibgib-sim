@@ -2,3 +2,7 @@
 *.md text eol=lf
 *.txt text eol=lf
 *.png binary
+
+# Сгенерированная веб-сборка — не учитывать в статистике языков GitHub.
+GibGib-Sim-3.4.3.html linguist-generated=true
+index.html linguist-documentation=false
