@@ -9,7 +9,7 @@
 [![Android](https://img.shields.io/badge/Android-8%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](#скачать)
 [![Web](https://img.shields.io/badge/Web-WebAssembly-E8833A?style=for-the-badge&logo=webassembly&logoColor=white)](#скачать)
 
-**Деталь → гибка → развёртка → чертёж A4 · 500 пуансонов + 500 матриц · без интернета и регистрации**
+**Деталь → гибка → развёртка → чертёж A4 · 500 пуансонов + 500 матриц · без учётной записи**
 
 [Возможности](#возможности) · [Как это работает](#как-это-работает) · [Скриншоты](#скриншоты) · [Скачать](#скачать) · [English](#english)
 
@@ -110,6 +110,10 @@
 
 Контрольные суммы SHA-256: **[SHA256SUMS.txt](https://github.com/frikks/gibgib-sim/releases/latest/download/SHA256SUMS.txt)** · [все релизы](https://github.com/frikks/gibgib-sim/releases) · [сайт проекта](https://frikks.github.io/gibgib-sim/).
 
+### Обновления в приложении
+
+В «Настройках» есть чекбокс **«Бета-версии (пререлизы)»** и кнопка **«Проверить обновления»**. Без галочки проверяются только стабильные релизы; с галочкой — и пререлизы вида 3.4.3.1. Раз в сутки приложение делает тихую проверку; при наличии новой версии можно скачать подходящий файл прямо из приложения.
+
 Сайт автоматически подтягивает версию, файлы и хеши из последнего релиза — обновлять его вручную не нужно.
 
 ### Что нового в 3.4.x
@@ -124,7 +128,7 @@
 
 ## Конфиденциальность и ограничения
 
-Приложение не запрашивает доступ к интернету, ничего не отправляет и не содержит рекламы. Единственное разрешение на Android — вибрация. Детали и настройки хранятся локально; отчёты и чертежи сохраняются через системный диалог.
+Приложение работает локально и не содержит рекламы. Интернет используется **только** для проверки обновлений и скачивания выбранного файла: раз в сутки тихая проверка, вручную — кнопкой в «Настройках». Без галочки «Бета-версии» проверяются только стабильные релизы. Разрешения на Android — вибрация и интернет. Детали и настройки хранятся локально; отчёты и чертежи сохраняются через системный диалог.
 
 Это учебно-справочный инструмент для технологов, операторов и студентов. Он не заменяет CAD/CAM и не управляет станком. Усилие гибки, пружинение и допуски не рассчитываются; 106 контуров восстановлены приближённо. Перед работой на станке сверяйте инструмент и последовательность гибов с реальными чертежами.
 
@@ -147,7 +151,7 @@
 
 ## English
 
-**Press Bending Simulating** is an offline press brake simulator for **Android, Windows and any browser**. Build a sheet metal part, pick a punch and die, watch every bend in 2D and 3D, check collisions, calculate the flat pattern (OSSB, BA, BD), get a K-factor and export an A4 drawing as PDF/PNG. No internet, no ads, RU/EN interface.
+**Press Bending Simulating** is a local press brake simulator for **Android, Windows and any browser**. Build a sheet metal part, pick a punch and die, watch every bend in 2D and 3D, check collisions, calculate the flat pattern (OSSB, BA, BD), get a K-factor and export an A4 drawing as PDF/PNG. No ads, RU/EN interface. Network is used only for update checks and downloads.
 
 - 500 punches + 500 dies, favourites and automatic selection; custom tooling from ASCII DXF.
 - Bending/hemming animation, collision checks, bend sequence search, springback, machine setup.
